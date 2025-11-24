@@ -15,7 +15,6 @@ function App() {
       <div className="app-root">
         <Header />
 
-        <main style={{flex: 1, padding: '1rem'}}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/rooms/search" element={<Search />} />
@@ -24,7 +23,7 @@ function App() {
             <Route path="/rooms/:id" element={<Room />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </main>
+
 
         <Footer />
       </div>
