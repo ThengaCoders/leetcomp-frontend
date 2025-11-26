@@ -1,0 +1,85 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.mainNav {
+  display: flex;
+  gap: 1.5rem;
+  font-weight: normal;
+  text-decoration:none;
+}
+@media (max-width: 400px) {
+  .mainNav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+.navLink {
+  color: #2c3e50;
+  font-weight: normal;
+  text-decoration:none;
+}
+
+/*--text decoration none ...aa sanam remove underline-->*/
+.navLink:hover {
+    color: black;
+    font-weight: normal;
+}
+.active {
+  color: black;
+}
+/*<!--not nav a : hover butttt nav a:hover-->*/
+
+.logo {
+    font-size: 29px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.logoLink {
+          display :flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size:2rem;
+          text-decoration:none;
+          color: #FFA116;
+          font-weight: bold;
+          }
+.logoSymbol {
+    font-family: "Font Awesome 6 Free",sans-serif;
+
+font-weight: 900;
+font-size: 2.5rem;
+  color: #FFA116;
+  white-space: nowrap; 
+  -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.logoText {
+
+  color: #2c3e50;
+  font-size: 1.8rem;
+}
+@media (max-width: 600px) {
+  .logoSymbol {
+    font-size: 2rem;
+  }
+  .logoText {
+    font-size: 1.5rem;
+  }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+} 
+
+/*bro this height and margin is imp if footer we want at end of page even if page is emepty */
+
