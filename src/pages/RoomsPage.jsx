@@ -3,12 +3,12 @@ import RoomsSlider from "../components/RoomsSlider/RoomsSlider";
 
 const RoomsPage = () => {
   const rooms = [
-    { id: 1, title: "Room A", description: "Competitive Coding Group" },
-    { id: 2, title: "Room B", description: "Daily DSA Challenge" },
-    { id: 3, title: "Room C", description: "LeetCode Marathon" },
-    { id: 4, title: "Room D", description: "React Mastery Room" },
-    { id: 5, title: "Room E", description: "Machine Learning Room" },
-    { id: 6, title: "Room F", description: "Machine Room" },
+    { name: "Apple Room", participants: 100, cost: 100, prize: 10000, days: 20, hrs: 20, mins: 2 },
+    { name: "Banana Room", participants: 200, cost: 100, prize: 20000, days: 20, hrs: 20, mins: 2 },
+    { name: "Choco Room", participants: 300, cost: 100, prize: 30000, days: 20, hrs: 20, mins: 2 },
+    { name: "Dream Room", participants: 400, cost: 100, prize: 40000, days: 20, hrs: 20, mins: 2 },
+    { name: "Egg Room", participants: 500, cost: 100, prize: 50000, days: 20, hrs: 20, mins: 2 },
+    { name: "Falooda Room", participants: 600, cost: 100, prize: 60000, days: 20, hrs: 20, mins: 2 },
   ];
 
   return (
