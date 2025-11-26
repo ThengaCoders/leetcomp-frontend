@@ -116,7 +116,7 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .arrow-btn {
     display: none;
   }
@@ -189,7 +189,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .slider-container {
     padding: 12px 16px;
   }
