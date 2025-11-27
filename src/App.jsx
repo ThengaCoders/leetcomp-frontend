@@ -1,5 +1,7 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import setupInterceptors from "./api/setupInterceptors";
+import { clearToken } from "./auth/tokenStore";
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './components/Home'
@@ -9,6 +11,21 @@ import Create from './components/Create'
 import MyRooms from './components/MyRooms'
 import Room from './components/Room'
 import NotFound from './components/NotFound'
+
+function InterceptorBoot() {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    const onLogout = () => {
+      clearToken();
+    };
+    setupInterceptors(navigate, onLogout);
+
+    return () => { /* you may eject interceptors if desired */ };
+  }, [navigate]);
+
+  return null; // this component mounts purely to setup interceptors
+}
 
 function App() {
   return (
