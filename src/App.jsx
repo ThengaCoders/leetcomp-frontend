@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './components/Home'
 import GoogleLogin from './pages/GoogleLogin'
+import Onboard from './pages/Onboard'
 import Search from './components/Search'
 import Create from './components/Create'
 import MyRooms from './components/MyRooms'
@@ -36,6 +37,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<GoogleLogin />} />
+            <Route path="/onboard" element={<Onboard />} />
             <Route path="/rooms/search" element={<Search />} />
             <Route path="/rooms/create" element={<Create />} />
             <Route path="/rooms" element={<MyRooms />} />
