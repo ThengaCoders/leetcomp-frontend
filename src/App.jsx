@@ -1,3 +1,4 @@
+import React from "react";
 import './App.css'
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
 import setupInterceptors from "./api/setupInterceptors";
@@ -31,6 +32,7 @@ function InterceptorBoot() {
 function App() {
   return (
     <BrowserRouter>
+      <InterceptorBoot />
       <div className="app-root">
         <Header />
 
