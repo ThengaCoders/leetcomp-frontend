@@ -52,7 +52,7 @@ export default function GoogleLogin() {
       }
 
       if (onboardingRequired) {
-        navigate("/onboarding", { replace: true });
+        navigate("/onboard", { replace: true });
         return;
       }
 

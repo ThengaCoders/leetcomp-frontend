@@ -27,7 +27,7 @@ export default function setupInterceptors(navigate, onLogout) {
         if (res?.data?.onboardingRequired) {
           // optional: save session info if provided
           // e.g. if backend sends token/user here, handle as needed before navigation
-          if (typeof navigate === "function") navigate("/onboarding");
+          if (typeof navigate === "function") navigate("/onboard");
         }
       } catch (e) {
         // ignore
