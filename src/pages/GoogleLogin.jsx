@@ -1,9 +1,13 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../api/axios";
+import { saveToken } from "../auth/tokenStore";
 import styles from "./GoogleLogin.module.css";
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 export default function GoogleLogin() {
+  const navigate = useNavigate();
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -31,20 +35,39 @@ export default function GoogleLogin() {
     };
   }, []);
 
-  function handleCredentialResponse(response) {
-    console.log("Google Credential:", response);
-    const box = document.getElementById("cred-box");
-    box.textContent = JSON.stringify(response, null, 2);
+  async function handleCredentialResponse(response) {
+    try {
+      const googleToken = response.credential; // JWT from Google
+
+      // Send to your backend
+      const resp = await api.post("/auth/google", {
+        credential: googleToken,
+      });
+
+      // Backend response should include token + optional fields
+      const { token, onboardingRequired } = resp.data;
+
+      if (token) {
+        saveToken(token);
+      }
+
+      if (onboardingRequired) {
+        navigate("/onboarding", { replace: true });
+        return;
+      }
+
+      navigate("/", { replace: true });
+    } catch (err) {
+      console.error("Google login failed:", err);
+      alert("Google login failed. Please try again.");
+    }
   }
 
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.heading}>Google Login</h1>
-
       <div id="googleBtn" className={styles.signinButton}></div>
-
-      <h3 className={styles.label}>Credential Response:</h3>
-      <pre id="cred-box" className={styles.output}></pre>
     </div>
   );
 }
+
