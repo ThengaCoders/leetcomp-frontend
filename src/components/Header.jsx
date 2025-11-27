@@ -20,6 +20,7 @@ export default function Header() {
         {/* Use className function to conditionally add the 'active' class */}
         <NavLink 
           to="/rooms/" 
+          end
           className={({ isActive }) => 
             isActive 
               ? `${styles.navLink} ${styles.active}` 

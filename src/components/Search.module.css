@@ -1,0 +1,88 @@
+
+.searchPageContainer {
+  max-width: 1300px;
+  margin: 0 auto; 
+  padding: 40px 20px;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto; 
+  position : relative;
+  border: 2px solid #FFA116;
+  border-radius: 25px;
+  width: 650px; 
+  background-color: white;
+}
+
+.searchInput {
+  width: 100%;
+  flex: 1;
+  padding: 12px 50px 12px 15px;
+  border-radius: 25px;
+  border: none;
+  font-size: 1rem;
+  color: #2c3e50;
+  background-color: white;
+}
+
+.searchInput:focus,
+.searchInput:hover{
+  outline:none;
+  border-color: none;
+  box-shadow: 0 0 10px rgba(255, 161, 22, 0.8);
+}
+
+.searchInput::placeholder {	
+  color: #2c3e50;	
+  opacity: 1;	
+}
+
+.searchInput::-webkit-input-placeholder {
+  color: #2c3e50;
+  opacity: 1;
+}
+
+.searchInput::-moz-placeholder {
+  color: #2c3e50;
+  opacity: 1;
+}
+
+.searchBtn {	
+  position:absolute;
+  right:10px;
+  top: 50%;
+  background: none;
+  transform: translateY(-50%);
+  border: none;
+  color: #2c3e50; 
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.searchBtn:hover {
+  background: none;
+  transform: translateY(-50%) scale(1.3);
+}
+
+
+.resultsHeading {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #2c3e50;
+  font-size: 1.8rem;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 30px; 
+  padding: 20px 0;
+  justify-content: center;
+  justify-items: center;
+  
+}

@@ -27,6 +27,7 @@ header {
 .navLink:hover {
     color: black;
     font-weight: normal;
+    text-decoration:none !important;
 }
 .active {
   color: black;
@@ -36,6 +37,7 @@ header {
 .logo {
     font-size: 29px;
     font-family: 'JetBrains Mono', monospace;
+    text-decoration:none;
 }
 
 .logoLink {
@@ -46,6 +48,7 @@ header {
           text-decoration:none;
           color: #FFA116;
           font-weight: bold;
+          text-decoration:none !important;
           }
 .logoSymbol {
     font-family: "Font Awesome 6 Free",sans-serif;
@@ -61,6 +64,7 @@ font-size: 2.5rem;
 
   color: #2c3e50;
   font-size: 1.8rem;
+  text-decoration:none;
 }
 @media (max-width: 600px) {
   .logoSymbol {
@@ -71,15 +75,12 @@ font-size: 2.5rem;
   }
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-}
 
-html, body {
-    height: 100%;
-    margin: 0;
-} 
+header a,
+header a * {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
 
 /*bro this height and margin is imp if footer we want at end of page even if page is emepty */
 
