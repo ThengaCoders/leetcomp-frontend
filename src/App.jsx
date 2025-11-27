@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './components/Home'
+import GoogleLogin from './pages/GoogleLogin'
 import Search from './components/Search'
 import Create from './components/Create'
 import MyRooms from './components/MyRooms'
@@ -17,6 +18,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<GoogleLogin />} />
             <Route path="/rooms/search" element={<Search />} />
             <Route path="/rooms/create" element={<Create />} />
             <Route path="/rooms" element={<MyRooms />} />
