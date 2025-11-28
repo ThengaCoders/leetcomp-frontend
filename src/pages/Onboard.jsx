@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios"; // axios instance with token + onboarding handling
 import styles from "./Onboard.module.css";
@@ -6,7 +6,17 @@ import styles from "./Onboard.module.css";
 export default function Onboard() {
   const [username, setUsername] = useState("");
   const [leetcode, setLeetcode] = useState("");
+  const [phone, setPhone] = useState("");
+  const [upi, setUpi] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -15,6 +25,8 @@ export default function Onboard() {
       const res = await api.post("/auth/onboard", {
         username,
         leetcode,
+        phone,
+        upi,
       });
 
       console.log("Onboard:", res.data);
@@ -50,29 +62,65 @@ export default function Onboard() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
-        <h1 className={styles.heading}>Complete Your Profile</h1>
-
         <form className={styles.form} onSubmit={handleSubmit}>
-          <label className={styles.label}>Username</label>
-          <input
-            type="text"
-            className={styles.input}
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter a unique username"
-          />
+          <div className={styles.fieldGroup}>
+            <label className={styles.label}>Username</label>
+            <div className={styles.inputShell}>
+              <span>@</span>
+              <input
+                type="text"
+                className={styles.input}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="enter-unique-handle"
+              />
+            </div>
+          </div>
 
-          <label className={styles.label}>LeetCode ID</label>
-          <input
-            type="text"
-            className={styles.input}
-            value={leetcode}
-            onChange={(e) => setLeetcode(e.target.value)}
-            placeholder="Your LeetCode handle"
-          />
+          <div className={styles.fieldGroup}>
+            <label className={styles.label}>LeetCode ID</label>
+            <div className={styles.inputShell}>
+              <span>LC</span>
+              <input
+                type="text"
+                className={styles.input}
+                value={leetcode}
+                onChange={(e) => setLeetcode(e.target.value)}
+                placeholder="your-leetcode-username"
+              />
+            </div>
+          </div>
+
+          <div className={styles.fieldGroup}>
+            <label className={styles.label}>Phone Number</label>
+            <div className={styles.inputShell}>
+              <span>+91</span>
+              <input
+                type="tel"
+                className={styles.input}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, "").slice(0, 10))}
+                placeholder="9876543210"
+              />
+            </div>
+          </div>
+
+          <div className={styles.fieldGroup}>
+            <label className={styles.label}>UPI ID</label>
+            <div className={styles.inputShell}>
+              <span>UPI</span>
+              <input
+                type="text"
+                className={styles.input}
+                value={upi}
+                onChange={(e) => setUpi(e.target.value)}
+                placeholder="username@bank"
+              />
+            </div>
+          </div>
 
           <button type="submit" className={styles.submit}>
-            Submit
+            Save & Continue
           </button>
         </form>
       </div>

@@ -1,9 +1,10 @@
-import React from 'react'
+import styles from "./Footer.module.css";
 
 export default function Footer() {
   return (
-    <footer>
-      <h1>#footer</h1>
+    <footer className={styles.myFooter}>
+      <div className={styles.line}></div>
+      <p className={styles.text}>© Copyrighted by Thenga Coders</p>
     </footer>
-  )
+  );
 }
