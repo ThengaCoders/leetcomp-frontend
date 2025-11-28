@@ -15,7 +15,7 @@ export default function Header() {
     { label: "Create Room", path: "/rooms/create" },
     { label: "My Rooms", path: "/rooms" },
     { label: "Room Details", path: "/rooms/demo-room" },
-    // { label: "Payout Dashboard", path: "/payout-dashboard" },
+    { label: "Payout Dashboard", path: "/payout-dashboard" },
   ];
 
   useEffect(() => {
