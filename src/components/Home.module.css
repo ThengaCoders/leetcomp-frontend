@@ -1,4 +1,4 @@
-
+/* --- MAIN CONTAINER --- */
 .home-container {
     flex: 1; 
     display: flex;
@@ -12,8 +12,15 @@
     max-width: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
+
+    /* ANIMATION FIXES: */
+    height: 100%; 
+    min-height: auto; 
+    padding-bottom: 10vh; /* Lifts content up visually */
+    background-color: #f9f9f9;
 }
 
+/* --- BRANDING --- */
 .brand-wrapper {
     display: flex;
     align-items: center;
@@ -24,6 +31,7 @@
 .logo-icon {
     font-size: 3.5rem; 
     color: #FFA116; 
+    animation: float 3s ease-in-out infinite; 
 }
 
 .brand-title {
@@ -33,15 +41,34 @@
     margin: 0;
     letter-spacing: -2px;
     font-family: 'JetBrains Mono', monospace; 
+    min-width: 300px; 
+    text-align: left;
 }
 
+.ui-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px); 
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Visible State (Triggered by React) */
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- ELEMENTS --- */
 .tagline {
     font-size: 1.2rem;
     color: #7f8c8d;
     font-style: italic;
     margin-top: -10px;
 }
-
 
 .search-input {
     width: 100%;
@@ -51,11 +78,12 @@
     border: 2px solid #e0e0e0;
     border-radius: 50px; 
     outline: none;
-    
+    transition: all 0.3s ease;
 }
 
 .search-input:focus {
     border-color: #FFA116; 
+    box-shadow: 0 4px 12px rgba(255, 161, 22, 0.2);
 }
 
 .create-btn {
@@ -67,12 +95,13 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    
+    transition: all 0.2s ease;
 }
 
 .create-btn:hover {
     background-color: #FFA116;
     color: black;
+    transform: translateY(-3px);
 }
 
 header {
@@ -83,90 +112,45 @@ header {
     color: #aaa;
 }
 
-/* Tablet styles (max-width: 1024px) */
+/* --- KEYFRAMES --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
 @media (max-width: 1024px) {
-    .brand-title {
-        font-size: 3.5rem;
-    }
-
-    .logo-icon {
-        font-size: 3.2rem;
-    }
-
-    .tagline {
-        font-size: 1.1rem;
-    }
-
-    .search-input {
-        max-width: 380px;
-    }
+    .brand-title { font-size: 3.5rem; min-width: auto; }
+    .logo-icon { font-size: 3.2rem; }
+    .tagline { font-size: 1.1rem; }
+    .search-input { max-width: 380px; }
 }
 
 /* Mobile styles (max-width: 768px) */
 @media (max-width: 768px) {
-    .home-container {
-        padding: 16px;
-        gap: 16px;
-    }
-
-    .brand-title {
-        font-size: 3rem;
-    }
-
-    .logo-icon {
-        font-size: 2.8rem;
-    }
-
-    .tagline {
-        font-size: 1rem;
-    }
-
-    .search-input {
-        max-width: 100%;
-        padding: 14px 20px;
-        font-size: 0.95rem;
-    }
-
-    .create-btn {
-        padding: 12px 28px;
-        font-size: 0.95rem;
-    }
+    .home-container { padding: 16px; gap: 16px; }
+    .brand-title { font-size: 3rem; min-width: auto; }
+    .logo-icon { font-size: 2.8rem; }
+    .tagline { font-size: 1rem; }
+    .search-input { max-width: 100%; padding: 14px 20px; font-size: 0.95rem; }
+    .create-btn { padding: 12px 28px; font-size: 0.95rem; }
 }
 
 /* Small mobile styles (max-width: 480px) */
 @media (max-width: 480px) {
-    .home-container {
-        padding: 12px;
-        gap: 14px;
-    }
-
-    .brand-wrapper {
-        flex-direction: column; 
-        gap: 5px; 
-    }
-
-    .brand-title {
+    .home-container { padding: 12px; gap: 14px; }
+    
+    /* Stack Icon on Top */
+    .brand-wrapper { flex-direction: column; gap: 5px; }
+    
+    .brand-title { 
         font-size: 2.5rem; 
         letter-spacing: -1px; 
+        min-width: auto; /* Allow shrinking on mobile */
+        text-align: center; 
     }
-
-    .logo-icon {
-        font-size: 2.5rem; 
-    }
-
-    .search-input {
-        width: 100%; 
-        padding: 12px 15px; 
-        font-size: 0.9rem;
-    }
-
-    .tagline {
-        font-size: 0.95rem;
-        margin-top: 0;
-    }
-
-    .create-btn {
-        padding: 12px 24px;
-        font-size: 0.9rem;
-    }
+    
+    .logo-icon { font-size: 2.5rem; }
+    .search-input { width: 100%; padding: 12px 15px; font-size: 0.9rem; }
+    .tagline { font-size: 0.95rem; margin-top: 0; }
+    .create-btn { padding: 12px 24px; font-size: 0.9rem; }
 }
