@@ -39,7 +39,7 @@ function App() {
         <main className="app-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/signin" element={<GoogleLogin />} />
+            <Route path="/login" element={<GoogleLogin />} />
             <Route path="/onboard" element={<Onboard />} />
             <Route path="/rooms/search" element={<Search />} />
             <Route path="/rooms/create" element={<Create />} />
