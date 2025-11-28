@@ -38,7 +38,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<GoogleLogin />} />
+            <Route path="/signin" element={<GoogleLogin />} />
             <Route path="/onboard" element={<Onboard />} />
             <Route path="/rooms/search" element={<Search />} />
             <Route path="/rooms/create" element={<Create />} />
