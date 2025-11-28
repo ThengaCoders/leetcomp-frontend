@@ -5,11 +5,26 @@ header {
     padding: 20px;
 }
 
+.siteHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+  z-index: 150;
+}
+
 .mainNav {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.25rem;
   font-weight: normal;
-  text-decoration:none;
+  text-decoration: none;
+  align-items: center;
 }
 @media (max-width: 400px) {
   .mainNav {
@@ -20,7 +35,7 @@ header {
 .navLink {
   color: #2c3e50;
   font-weight: normal;
-  text-decoration:none;
+  text-decoration: none;
 }
 
 /*--text decoration none ...aa sanam remove underline-->*/
@@ -83,4 +98,72 @@ header a * {
 }
 
 /*bro this height and margin is imp if footer we want at end of page even if page is emepty */
+
+.routesWrapper {
+  position: relative;
+}
+
+.routesToggle {
+  border: 1px solid #dbe0e6;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  background: #ffffff;
+  color: #2c3e50;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.routesToggle:hover {
+  border-color: #ffa116;
+  box-shadow: 0 4px 12px rgba(255, 161, 22, 0.15);
+}
+
+.routesDropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 240px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 100;
+}
+
+.routeItem {
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.routeItem:hover {
+  background: #f7f8fa;
+  transform: translateX(2px);
+}
+
+.routeLabel {
+  font-size: 0.95rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.routePath {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-family: "JetBrains Mono", monospace;
+}
 

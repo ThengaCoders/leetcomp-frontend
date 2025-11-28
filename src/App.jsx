@@ -13,6 +13,7 @@ import Create from './components/Create'
 import MyRooms from './components/MyRooms'
 import Room from './components/Room'
 import NotFound from './components/NotFound'
+import PayoutDashboard from "./pages/PayoutDashboard";
 
 function InterceptorBoot() {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ function App() {
       <InterceptorBoot />
       <div className="app-root">
         <Header />
-
+        <main className="app-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/signin" element={<GoogleLogin />} />
@@ -44,10 +45,10 @@ function App() {
             <Route path="/rooms/create" element={<Create />} />
             <Route path="/rooms" element={<MyRooms />} />
             <Route path="/rooms/:id" element={<Room />} />
+            <Route path="/payout-dashboard" element={<PayoutDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-
-
+        </main>
         <Footer />
       </div>
     </BrowserRouter>

@@ -1,67 +1,98 @@
 .wrapper {
-  min-height: 100vh;
-  background: #2c3e50;
+  width: 100%;
+  height: calc(100vh - 84px - 64px);
+  padding: 0;
+  margin: 0;
+  background: #f5f6fb;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 20px;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .card {
+  width: min(420px, 90vw);
   background: #ffffff;
-  padding: 35px 45px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 420px;
+  border-radius: 18px;
+  padding: 32px;
+  border: 1px solid rgba(154, 162, 178, 0.25);
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.15), 0 8px 20px rgba(44, 62, 80, 0.08);
+  backdrop-filter: blur(4px);
 }
-
-.heading {
-  text-align: center;
-  color: #2c3e50;
-  font-size: 28px;
-  margin-bottom: 25px;
-  font-weight: 700;
-}
-
 .form {
   display: flex;
   flex-direction: column;
+  gap: 18px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .label {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  margin-bottom: 6px;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.inputShell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  padding: 12px 14px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  background: #fdfdfd;
+}
+
+.inputShell span {
+  font-weight: 600;
   color: #2c3e50;
+  opacity: 0.7;
 }
 
 .input {
-  padding: 12px;
-  border: 2px solid #ffa116;
-  border-radius: 6px;
-  margin-bottom: 20px;
-  font-size: 15px;
+  border: none;
   outline: none;
-  transition: 0.3s;
+  flex: 1;
+  font-size: 15px;
+  background: transparent;
+  font-family: inherit;
 }
 
-.input:focus {
-  border-color: #e0890f;
+.inputShell:focus-within {
+  border-color: #ffa116;
+  box-shadow: 0 0 0 3px rgba(255, 161, 22, 0.18);
 }
 
 .submit {
-  background: #ffa116;
-  color: white;
+  background: linear-gradient(135deg, #ffa116, #ffb647);
+  color: #ffffff;
   border: none;
-  padding: 12px;
-  font-size: 17px;
-  font-weight: bold;
-  border-radius: 6px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 16px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 18px 35px rgba(255, 161, 22, 0.25);
 }
 
 .submit:hover {
-  background: #e0890f;
+  transform: translateY(-1px);
+  box-shadow: 0 22px 40px rgba(255, 161, 22, 0.35);
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: calc(100% - 32px);
+    padding: 24px;
+    box-shadow: none;
+  }
 }
