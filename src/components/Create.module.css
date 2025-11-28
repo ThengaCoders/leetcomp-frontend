@@ -121,7 +121,7 @@
     transform: translateY(-2px);
 }
 
-/* --- 📱 MOBILE RESPONSIVENESS --- */
+
 @media (max-width: 600px) {
     .container {
         width: 95%; /* Take up 95% of the mobile screen */

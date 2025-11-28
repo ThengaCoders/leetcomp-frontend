@@ -1,36 +1,68 @@
-
-.home-container {
-    flex: 1; 
+/* --- MAIN CONTAINER --- */
+.homeContainer {
+    flex: 1;
     display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 20px;
-    gap: 20px; 
+    gap: 20px;
+    
+    /* Fixes we discussed earlier */
+    height: 100%; 
+    min-height: auto; 
+    padding-bottom: 10vh; 
+    background-color: #f9f9f9;
+    overflow: hidden; 
 }
 
-.brand-wrapper {
+/* --- PART 1: BRANDING --- */
+.brandWrapper {
     display: flex;
     align-items: center;
     gap: 15px;
     margin-bottom: 10px;
 }
 
-.logo-icon {
-    font-size: 3.5rem; 
-    color: #FFA116; 
+.logoIcon {
+    font-size: 3.5rem;
+    color: #FFA116; /* LeetCode Orange */
+    animation: float 3s ease-in-out infinite; /* Keeps the subtle float */
 }
 
-.brand-title {
+.brandTitle {
     font-size: 4rem;
     font-weight: 800;
     color: #2c3e50;
     margin: 0;
     letter-spacing: -2px;
-    font-family: 'JetBrains Mono', monospace; 
+    font-family: 'JetBrains Mono', monospace;
+    min-width: 300px; /* Keeps layout stable */
 }
 
+/* --- PART 2: UI CONTAINER (The Animation Engine) --- */
+/* This is what makes the inputs slide up after 1 second */
+.uiContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    
+    /* HIDDEN STATE (Initial) */
+    opacity: 0;
+    transform: translateY(20px); 
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* VISIBLE STATE (Triggered by JS) */
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- ELEMENTS --- */
 .tagline {
     font-size: 1.2rem;
     color: #7f8c8d;
@@ -38,23 +70,23 @@
     margin-top: -10px;
 }
 
-
-.search-input {
+.searchInput {
     width: 100%;
     max-width: 400px;
     padding: 15px 25px;
     font-size: 1rem;
     border: 2px solid #e0e0e0;
-    border-radius: 50px; 
+    border-radius: 50px;
     outline: none;
-    
+    transition: all 0.3s ease;
 }
 
-.search-input:focus {
-    border-color: #FFA116; 
+.searchInput:focus {
+    border-color: #FFA116;
+    box-shadow: 0 4px 12px rgba(255, 161, 22, 0.2);
 }
 
-.create-btn {
+.createBtn {
     background-color: #2c3e50;
     color: white;
     padding: 12px 30px;
@@ -63,47 +95,52 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    
+    transition: all 0.2s ease;
 }
 
-.create-btn:hover {
+.createBtn:hover {
     background-color: #FFA116;
     color: black;
+    transform: translateY(-3px);
 }
 
-header, footer {
-    background: #fff;
-    padding: 15px;
-    text-align: center;
-    border: 1px solid #ddd;
-    color: #aaa;
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 600px) {
-    
-    .brand-wrapper {
-        flex-direction: column; 
-        gap: 5px; 
+    .brandWrapper {
+        flex-direction: column;
+        gap: 5px;
     }
-    .brand-title {
-        font-size: 2.5rem; 
-        letter-spacing: -1px; 
+    .brandTitle {
+        font-size: 2.5rem;
+        letter-spacing: -1px;
+        min-width: auto;
+        text-align: center;
+        margin-left: 0;
     }
-    .logo-icon {
-        font-size: 3rem; 
+    .logoIcon {
+        font-size: 3rem;
     }
-    .search-input {
-        width: 100%; 
-        padding: 12px 15px; 
+    .searchInput {
+        width: 90%;
+        padding: 12px 15px;
         font-size: 0.9rem;
     }
     .tagline {
         font-size: 1rem;
         margin-top: 0;
     }
-    .home-container {
+    .homeContainer {
         padding-left: 15px;
         padding-right: 15px;
-        width: 100%; 
+        width: 100%;
+    }
+    .createBtn {
+        width: 90%;
+        max-width: 300px;
     }
 }
