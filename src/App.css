@@ -3,14 +3,41 @@ html,
 #root {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100%;
     font-family: 'Inter', sans-serif;
 }
 
 .app-root {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100%;
+    padding-top: 84px; /* reserve space for fixed header */
+    padding-bottom: 64px; /* reserve space for fixed footer */
+    box-sizing: border-box;
+}
+
+.app-content {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0 24px 24px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.site-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #0f172a;
+    color: #f8fafc;
+    text-align: center;
+    padding: 0;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    z-index: 100;
 }
 
 .rooms-page {
@@ -25,4 +52,14 @@ html,
     display: flex;
     flex-direction: column;
     min-height: 0;
+}
+
+@media (max-width: 768px) {
+    .app-root {
+        padding-bottom: 72px;
+    }
+
+    .app-content {
+        padding: 0 16px 20px;
+    }
 }
