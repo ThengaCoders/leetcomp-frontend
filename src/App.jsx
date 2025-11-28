@@ -13,6 +13,7 @@ import Create from './components/Create'
 import MyRooms from './components/MyRooms'
 import Room from './components/Room'
 import NotFound from './components/NotFound'
+import Profile from "./pages/Profile";
 import PayoutDashboard from "./pages/PayoutDashboard";
 
 function InterceptorBoot() {
@@ -47,6 +48,7 @@ function App() {
             <Route path="/rooms/:id" element={<Room />} />
             <Route path="/payout-dashboard" element={<PayoutDashboard />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
         <Footer />
