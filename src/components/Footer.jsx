@@ -1,9 +1,10 @@
-import React from 'react'
+import styles from "./Footer.module.css";
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <p>© {new Date().getFullYear()} LeeComp. All rights reserved.</p>
+    <footer className={styles.myFooter}>
+      <div className={styles.line}></div>
+      <p className={styles.text}>© Copyrighted by Thenga Coders</p>
     </footer>
   );
 }
