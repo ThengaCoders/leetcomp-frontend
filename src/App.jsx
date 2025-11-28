@@ -13,6 +13,7 @@ import Create from './components/Create'
 import MyRooms from './components/MyRooms'
 import Room from './components/Room'
 import NotFound from './components/NotFound'
+import Profile from "./pages/Profile";
 
 function InterceptorBoot() {
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ function App() {
             <Route path="/rooms" element={<MyRooms />} />
             <Route path="/rooms/:id" element={<Room />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
 
 
