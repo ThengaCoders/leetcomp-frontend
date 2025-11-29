@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios"; // axios instance with token + onboarding handling
 import styles from "./Onboard.module.css";
@@ -9,14 +9,6 @@ export default function Onboard() {
   const [phone, setPhone] = useState("");
   const [upi, setUpi] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
