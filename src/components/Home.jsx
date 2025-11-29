@@ -26,7 +26,7 @@ const Home = () => {
 
       </main>
 
-      <footer> [ Footer Component ] </footer>
+      
     </>
   );
 };
