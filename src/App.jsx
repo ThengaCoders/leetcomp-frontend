@@ -15,6 +15,7 @@ import Room from './components/Room'
 import NotFound from './components/NotFound'
 import Profile from "./pages/Profile";
 import PayoutDashboard from "./pages/PayoutDashboard";
+import RoomPageWrapper from "./pages/RoomPageWrapper";
 
 function InterceptorBoot() {
   const navigate = useNavigate();
