@@ -44,6 +44,19 @@ header {
     font-weight: normal;
     text-decoration:none !important;
 }
+
+.navLinkBtn {
+  background: transparent;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  color: #2c3e50;
+}
+
+.navLinkBtn:hover {
+  color: black;
+}
+
 .active {
   color: black;
 }

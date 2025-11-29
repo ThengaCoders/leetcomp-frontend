@@ -1,11 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { getToken } from "../auth/tokenStore";
+import { logout } from "../auth/logout";
 import styles from "./Header.module.css";
 
 export default function Header() {
   const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(!!getToken());
   const [isRoutesOpen, setIsRoutesOpen] = useState(false);
   const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLoggedIn(!!getToken()); // sync token changes
+    }, 300);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleLogout = async () => {
+    await logout(navigate);
+  };
 
   const routeOptions = [
     { label: "Home", path: "/" },
@@ -19,8 +33,8 @@ export default function Header() {
   ];
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsRoutesOpen(false);
       }
     };
@@ -47,7 +61,6 @@ export default function Header() {
       <nav className={styles.mainNav}>
         <NavLink
           to="/rooms"
-          end
           className={({ isActive }) =>
             isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
           }
@@ -55,24 +68,29 @@ export default function Header() {
           My Rooms
         </NavLink>
 
-        <NavLink
-          to="/login"
-          className={({ isActive }) =>
-            isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
-          }
-        >
-          Sign In
-        </NavLink>
+        {loggedIn ? (
+          <button onClick={handleLogout} className={styles.navLinkBtn}>
+            Logout
+          </button>
+        ) : (
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+            }
+          >
+            Sign In
+          </NavLink>
+        )}
 
         <div className={styles.routesWrapper} ref={dropdownRef}>
           <button
             className={styles.routesToggle}
             onClick={() => setIsRoutesOpen((prev) => !prev)}
-            aria-expanded={isRoutesOpen}
           >
-            Routes
-            <span aria-hidden="true">▾</span>
+            Routes ▾
           </button>
+
           {isRoutesOpen && (
             <div className={styles.routesDropdown}>
               {routeOptions.map((route) => (
