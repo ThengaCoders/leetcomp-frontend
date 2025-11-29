@@ -3,18 +3,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: 60px 40px 40px; 
   font-family: Arial, sans-serif;
 }
 
 .line {
-  width: 100%;
-  height: 2px;
-  background-color: black;
-  margin-bottom: 30px;
+  width: 100%;             
+  height: 1px;            /* thinner line */
+  background-color: #ccc; /* light gray */
+  margin: 20px 0 15px 0;  /* adjust spacing above & below the line */
+  border-radius: 2px;
 }
 
 .text {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;        
+  color: #4a5568;
+  padding-bottom: 20px;   /* moves the text further down */
 }
