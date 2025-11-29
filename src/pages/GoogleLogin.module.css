@@ -1,21 +1,16 @@
-:root {
-  --primary: #ffa116;
-  --dark: #2c3e50;
-}
-
 .wrapper {
   padding: 40px;
   font-family: Arial, sans-serif;
   max-width: 600px;
   margin: auto;
-  color: var(--dark);
+  color: #2c3e50;
 }
 
 .heading {
   font-size: 28px;
   margin-bottom: 25px;
   text-align: center;
-  color: var(--primary);
+  color: #2c3e50;
   font-weight: 700;
 }
 
@@ -28,16 +23,6 @@
 .label {
   margin-top: 20px;
   font-size: 18px;
-  color: var(--dark);
+  color: #2c3e50;
   font-weight: 600;
-}
-
-.output {
-  background: #fdf6ec;
-  padding: 15px;
-  border-radius: 8px;
-  border: 2px solid var(--primary);
-  font-size: 14px;
-  color: var(--dark);
-  white-space: pre-wrap;
 }

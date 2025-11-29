@@ -1,24 +1,101 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RoomsSlider from "../components/RoomsSlider/RoomsSlider";
+import api from "../api/axios";
+import styles from "./RoomsPage.module.css";
 
 const RoomsPage = () => {
-  const rooms = [
-    { name: "Apple Room", participants: 100, cost: 100, prize: 10000, days: 20, hrs: 20, mins: 2 },
-    { name: "Banana Room", participants: 200, cost: 100, prize: 20000, days: 20, hrs: 20, mins: 2 },
-    { name: "Choco Room", participants: 300, cost: 100, prize: 30000, days: 20, hrs: 20, mins: 2 },
-    { name: "Dream Room", participants: 400, cost: 100, prize: 40000, days: 20, hrs: 20, mins: 2 },
-    { name: "Egg Room", participants: 500, cost: 100, prize: 50000, days: 20, hrs: 20, mins: 2 },
-    { name: "Falooda Room", participants: 600, cost: 100, prize: 60000, days: 20, hrs: 20, mins: 2 },
-  ];
+  const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function fetchRooms() {
+      try {
+        const res = await api.get("/api/rooms/");
+
+        const transformed = res.data.map((room) => {
+          const end = new Date(room.end_date);
+          const now = new Date();
+          const diffMs = end - now;
+
+          let days = 0,
+            hrs = 0,
+            mins = 0;
+
+          if (diffMs > 0) {
+            days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            hrs = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
+            mins = Math.floor((diffMs / (1000 * 60)) % 60);
+          }
+
+          return {
+            name: room.name,
+            participants: room.participant_count,
+            cost: room.cost,
+            prize: room.cost * room.participant_count,
+            days,
+            hrs,
+            mins,
+          };
+        });
+
+        setRooms(transformed);
+      } catch (err) {
+        console.log(err);
+        setError("Failed to load rooms");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchRooms();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <div className={styles.statusBox}>
+            <h2 className={styles.statusTitle}>Loading Rooms...</h2>
+            <p className={styles.statusText}>Please wait while we fetch your rooms.</p>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <div className={styles.statusBox}>
+            <h2 className={styles.statusTitle}>Error</h2>
+            <p className={styles.statusText}>{error}</p>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
-    <div className="rooms-page">
-      {/* <Header /> */}
-      <main className="rooms-page__main">
-        <RoomsSlider rooms={rooms} />
-      </main>
-      {/* <Footer /> */}
-    </div>
+    <>
+      {rooms.length > 0 ? (
+        <div>
+          <main>
+            <RoomsSlider rooms={rooms} />
+          </main>
+        </div>
+        ) : (
+        <div className={styles.page}>
+          <main className={styles.main}>
+            <div className={styles.statusBox}>
+              <h2 className={styles.statusTitle}>No Rooms Found</h2>
+              <p className={styles.statusText}>You have no rooms to display</p>
+            </div>
+          </main>
+        </div>
+      )}
+    </>
   );
 };
 

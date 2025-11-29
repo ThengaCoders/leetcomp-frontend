@@ -1,12 +1,10 @@
 import React from 'react';
 import styles from './Home.module.css';
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
     <>
-      <header> [ Header Component ] </header>
-
-      {}
       <main className={styles['home-container']}>
         
         <div className={styles['brand-wrapper']}>
@@ -22,7 +20,9 @@ const Home = () => {
             placeholder="Search for a room..." 
         />
 
-        <button className={styles['create-btn']}>Create Room</button>
+        <NavLink to="/rooms/create">
+          <button className={styles['create-btn']}>Create Room</button>
+        </NavLink>
 
       </main>
 
