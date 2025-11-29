@@ -1,7 +1,10 @@
 .page {
   width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .main {
@@ -9,6 +12,8 @@
   max-width: 900px;
   padding: 20px;
   margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Shared status card (loading, error, empty) */
@@ -33,4 +38,55 @@
 .statusText {
   color: #666;
   font-size: 16px;
+}
+
+/* Tablet styles (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .main {
+    padding: 18px;
+  }
+
+  .statusBox {
+    padding: 35px 18px;
+  }
+}
+
+/* Mobile styles (max-width: 768px) */
+@media (max-width: 768px) {
+  .main {
+    padding: 16px;
+  }
+
+  .statusBox {
+    padding: 30px 16px;
+    margin-top: 30px;
+  }
+
+  .statusTitle {
+    font-size: 18px;
+  }
+
+  .statusText {
+    font-size: 15px;
+  }
+}
+
+/* Small mobile styles (max-width: 480px) */
+@media (max-width: 480px) {
+  .main {
+    padding: 12px;
+  }
+
+  .statusBox {
+    padding: 24px 12px;
+    margin-top: 20px;
+  }
+
+  .statusTitle {
+    font-size: 16px;
+  }
+
+  .statusText {
+    font-size: 14px;
+  }
 }

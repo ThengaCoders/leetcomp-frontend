@@ -1,7 +1,10 @@
 .page {
   width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .main {
@@ -9,6 +12,8 @@
   max-width: 900px;
   padding: 20px;
   margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Shared status card (loading, error, empty) */
@@ -35,6 +40,10 @@
   justify-content: center;
   padding: 40px;
   min-height: 71vh;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .card {
@@ -82,4 +91,107 @@
   font-size: 18px;
   padding: 20px;
   color: #ffa116;
+}
+
+/* Tablet styles (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .main {
+    padding: 18px;
+  }
+
+  .container {
+    padding: 35px;
+  }
+
+  .card {
+    width: 320px;
+  }
+}
+
+/* Mobile styles (max-width: 768px) */
+@media (max-width: 768px) {
+  .main {
+    padding: 16px;
+  }
+
+  .statusBox {
+    padding: 30px 16px;
+    margin-top: 30px;
+  }
+
+  .statusTitle {
+    font-size: 18px;
+  }
+
+  .statusText {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 24px 16px;
+    min-height: 65vh;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 320px;
+    padding: 20px;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-width: 3px;
+  }
+
+  .username {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .info {
+    font-size: 14px;
+  }
+}
+
+/* Small mobile styles (max-width: 480px) */
+@media (max-width: 480px) {
+  .main {
+    padding: 12px;
+  }
+
+  .statusBox {
+    padding: 24px 12px;
+    margin-top: 20px;
+  }
+
+  .statusTitle {
+    font-size: 16px;
+  }
+
+  .statusText {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 20px 12px;
+    min-height: 60vh;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .username {
+    font-size: 15px;
+  }
+
+  .info {
+    font-size: 13px;
+  }
 }

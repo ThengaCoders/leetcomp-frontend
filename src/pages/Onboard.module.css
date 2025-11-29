@@ -1,5 +1,6 @@
 .wrapper {
   width: 100%;
+  max-width: 100%;
   min-height: calc(100vh - 84px - 64px);
   padding: 50px;
   margin: 0;
@@ -8,6 +9,7 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .card {
@@ -88,10 +90,70 @@
   box-shadow: 0 22px 40px rgba(255, 161, 22, 0.35);
 }
 
-@media (max-width: 600px) {
+/* Tablet styles (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .wrapper {
+    padding: 40px 30px;
+  }
+
+  .card {
+    width: min(400px, 90vw);
+    padding: 28px;
+  }
+}
+
+/* Mobile styles (max-width: 768px) */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 30px 20px;
+    min-height: calc(100vh - 70px - 64px);
+  }
+
+  .card {
+    width: min(380px, 90vw);
+    padding: 24px;
+  }
+
+  .label {
+    font-size: 12px;
+  }
+
+  .input {
+    font-size: 14px;
+  }
+
+  .submit {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+/* Small mobile styles (max-width: 480px) */
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 24px 16px;
+  }
+
   .card {
     width: calc(100% - 32px);
-    padding: 24px;
+    padding: 20px;
     box-shadow: none;
+  }
+
+  .form {
+    gap: 16px;
+  }
+
+  .inputShell {
+    padding: 10px 12px;
+  }
+
+  .input {
+    font-size: 14px;
+  }
+
+  .submit {
+    padding: 12px;
+    font-size: 14px;
   }
 }
