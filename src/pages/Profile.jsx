@@ -20,8 +20,28 @@ export default function Profile() {
     fetchUser();
   }, []);
 
-  if (loading) return <div className={styles.loading}>Loading...</div>;
-  if (!user) return <div className={styles.error}>Failed to load profile.</div>;
+  if (loading) {
+    return (
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <div className={styles.statusBox}>
+            <h2 className={styles.statusTitle}>Loading...</h2>
+          </div>
+        </main>
+      </div>
+    );
+  }
+  if (!user) {
+    return (
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <div className={styles.statusBox}>
+            <h2 className={styles.statusTitle}>Failed to load profile</h2>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
