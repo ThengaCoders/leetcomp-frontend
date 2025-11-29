@@ -12,7 +12,7 @@ html,
     flex-direction: column;
     min-height: 100%;
     padding-top: 84px; /* reserve space for fixed header */
-    padding-bottom: 64px; /* reserve space for fixed footer */
+    /*padding-bottom: 64px;*/
     box-sizing: border-box;
 }
 
@@ -39,7 +39,6 @@ html,
     box-sizing: border-box;
     z-index: 100;
 }
-
 .rooms-page {
     flex: 1;
     display: flex;

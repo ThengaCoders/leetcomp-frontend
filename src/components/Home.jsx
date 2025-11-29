@@ -25,6 +25,8 @@ const Home = () => {
         </NavLink>
 
       </main>
+
+      
     </>
   );
 };

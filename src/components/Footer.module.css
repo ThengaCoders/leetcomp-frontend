@@ -3,18 +3,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
-  font-family: Arial, sans-serif;
+  padding: 20px 40px 10px; /* increased top padding so footer moves lower */
+  font-family: Inter, sans-serif;
 }
 
 .line {
-  width: 100%;
-  height: 2px;
-  background-color: black;
-  margin-bottom: 30px;
+  width: 110%;            
+  height: 1px;            /* thinner line */
+  background-color: #ccc; /* light gray */
+  margin: 20px 0 15px 0;  /* adjust spacing above & below the line */
+  border-radius: 2px;
 }
 
 .text {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;        /* slightly smaller */
+  color: #0a1427;;
+  padding-bottom: 0.px;   /* moves the text further down */
 }
