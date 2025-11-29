@@ -3,27 +3,63 @@
 import React, { useState } from "react";
 import styles from "./Search.module.css";
 import RoomCard from './RoomsSlider/RoomCard'; 
+import api from "../api/axios"; 
 
 export default function Search() {
   const [query, setQuery] = useState("");
+  const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [searchedOnce, setSearchedOnce] = useState(false);
 
-  
-  const mockRooms = [
-    {
-      id: 1,
-      name: "JavaScript Interview Prep",
-      participants: 12,
-      cost: 50,
-      prize: 500,
-      days: 1,
-      hrs: 4,
-      mins: 22,
-    },
-  ];
+  const handleSearch = async () => {
+    if (!query.trim()) return;
+    setLoading(true);
+    setSearchedOnce(true);
+
+    try {
+      // Use api wrapper (token automatically added via interceptor)....thats why not axios
+      const res = await api.get(`/api/rooms/search?code=${query}`);
+
+      if (res.data.error) {
+        setRooms([]);
+        return;
+      }
+
+      const room = res.data;
+
+      // Countdown calculation    
+      const now = Date.now();
+      const endTime = new Date(room.end_date).getTime();
+      const diff = Math.max(endTime - now, 0);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+      const transformed = {
+        id: room.id,
+        name: room.name,
+        participants: room.participant_count,
+        cost: room.cost,
+        prize: room.participant_count * room.cost,
+        days,
+        hrs,
+        mins,
+        img: room.img_url
+      };
+
+      setRooms([transformed]);
+    } catch (err) {
+      console.error(err);
+      setRooms([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className={styles.searchPageContainer}> 
-      
+
+      {/* Search Bar */}
       <div className={styles.searchBar}>
         <input
           type="text"
@@ -31,30 +67,28 @@ export default function Search() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className={styles.searchInput}
+          onKeyDown={(e) => e.key === "Enter" && handleSearch()}    //enter avumbo search trigger aavan
         />
-        <button className={styles.searchBtn}>🔍</button>
+        <button className={styles.searchBtn} onClick={handleSearch}>
+          🔍
+        </button>
       </div>
-              {/*ithrem searchbox sanangal*/}
 
+      {/* Search Results */}
+      <div className={styles.cardGrid}>
+        {loading && <p className={styles.noResultsMessage}>Searching...</p>}
 
-    
-      {/* 3. Card Grid: Map over the mockRooms array 
-      from roomssslider */}
-     <div className={styles.cardGrid}>
-        {/* * 2. Conditional Rendering: Uses the map function only if a room is found (length > 0).
-        * This ensures the component handles both the 0 and 1 result states gracefully.
-        */}
-        {mockRooms.length > 0 && mockRooms.map((room) => (
-          <RoomCard 
-            key={room.id} // Essential for lists in React
-            room={room}    // Passes room data to the card component
-          />
-        ))}
+        {!loading && rooms.length > 0 &&
+          rooms.map((room) => <RoomCard key={room.id} room={room} />)}
 
-        {mockRooms.length === 0 && (
-            <p className={styles.noResultsMessage}>Try searching for a different room.</p>
+        {!loading && rooms.length === 0 && searchedOnce && (
+          <p className={styles.noResultsMessage}>
+            No room found.
+          </p>
         )}
       </div>
+
     </div>
   );
 }
+
