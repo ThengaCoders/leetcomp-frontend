@@ -45,7 +45,7 @@ function App() {
             <Route path="/rooms/search" element={<Search />} />
             <Route path="/rooms/create" element={<Create />} />
             <Route path="/rooms" element={<MyRooms />} />
-            <Route path="/rooms/:id" element={<Room />} />
+            <Route path="/rooms/:id" element={<RoomPageWrapper />} />
             <Route path="/payout-dashboard" element={<PayoutDashboard />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/profile" element={<Profile />} />
