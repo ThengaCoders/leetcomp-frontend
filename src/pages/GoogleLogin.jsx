@@ -65,7 +65,7 @@ export default function GoogleLogin() {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.heading}>Google Login</h1>
+      <h1 className={styles.heading}>Sign In</h1>
       <div id="googleBtn" className={styles.signinButton}></div>
     </div>
   );

@@ -1,8 +1,39 @@
+.page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* Shared status card (loading, error, empty) */
+.statusBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  margin-top: 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.statusTitle {
+  font-size: 20px;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
 .container {
   display: flex;
   justify-content: center;
   padding: 40px;
-  background-color: #2c3e50; /* main background */
   min-height: 71vh;
 }
 
