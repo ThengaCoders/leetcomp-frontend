@@ -6,6 +6,8 @@
   padding: 0 20px;
   font-family: "Inter", sans-serif;
   color: #2c3e50;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .dashboard-title {
@@ -364,8 +366,57 @@
   font-size: 15px;
 }
 
-/* ---------- Mobile Responsive ---------- */
-@media (max-width: 720px) {
+/* Tablet styles (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .dashboard {
+    padding: 0 18px;
+    margin: 35px auto;
+  }
+
+  .dashboard-title {
+    font-size: 28px;
+  }
+
+  .filter-tabs {
+    gap: 20px;
+  }
+
+  .filter-tab {
+    font-size: 15px;
+  }
+
+  .grid-layout {
+    grid-template-columns: 1fr 1.1fr 0.9fr 0.7fr 0.8fr 0.9fr;
+    column-gap: 16px;
+  }
+
+  .payout-modal {
+    width: min(85vw, 440px);
+  }
+}
+
+/* Mobile styles (max-width: 768px) */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 0 16px;
+    margin: 30px auto;
+  }
+
+  .dashboard-title {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+
+  .filter-tabs {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .filter-tab {
+    font-size: 14px;
+    padding: 6px 3px;
+  }
+
   .grid-layout {
     grid-template-columns: 1fr;
     text-align: left;
@@ -392,6 +443,10 @@
     padding: 18px;
   }
 
+  .payout-col {
+    font-size: 14px;
+  }
+
   .payout-modal {
     width: calc(100% - 32px);
     padding: 24px;
@@ -404,5 +459,52 @@
 
   .details-card {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Small mobile styles (max-width: 480px) */
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 0 12px;
+    margin: 24px auto;
+  }
+
+  .dashboard-title {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .filter-tabs {
+    gap: 12px;
+    margin-bottom: 18px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-tab {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .payout-row {
+    padding: 16px;
+  }
+
+  .payout-col {
+    font-size: 13px;
+  }
+
+  .payout-modal {
+    width: calc(100% - 24px);
+    padding: 20px;
+  }
+
+  .modal-title {
+    font-size: 20px;
+  }
+
+  .qr-code-placeholder {
+    width: 160px;
+    height: 160px;
   }
 }

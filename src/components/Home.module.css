@@ -7,7 +7,11 @@
     align-items: center; 
     text-align: center;
     padding: 20px;
-    gap: 20px; 
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .brand-wrapper {
@@ -79,31 +83,90 @@ header {
     color: #aaa;
 }
 
-@media (max-width: 600px) {
-    
+/* Tablet styles (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .brand-title {
+        font-size: 3.5rem;
+    }
+
+    .logo-icon {
+        font-size: 3.2rem;
+    }
+
+    .tagline {
+        font-size: 1.1rem;
+    }
+
+    .search-input {
+        max-width: 380px;
+    }
+}
+
+/* Mobile styles (max-width: 768px) */
+@media (max-width: 768px) {
+    .home-container {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .brand-title {
+        font-size: 3rem;
+    }
+
+    .logo-icon {
+        font-size: 2.8rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .search-input {
+        max-width: 100%;
+        padding: 14px 20px;
+        font-size: 0.95rem;
+    }
+
+    .create-btn {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Small mobile styles (max-width: 480px) */
+@media (max-width: 480px) {
+    .home-container {
+        padding: 12px;
+        gap: 14px;
+    }
+
     .brand-wrapper {
         flex-direction: column; 
         gap: 5px; 
     }
+
     .brand-title {
         font-size: 2.5rem; 
         letter-spacing: -1px; 
     }
+
     .logo-icon {
-        font-size: 3rem; 
+        font-size: 2.5rem; 
     }
+
     .search-input {
         width: 100%; 
         padding: 12px 15px; 
         font-size: 0.9rem;
     }
+
     .tagline {
-        font-size: 1rem;
+        font-size: 0.95rem;
         margin-top: 0;
     }
-    .home-container {
-        padding-left: 15px;
-        padding-right: 15px;
-        width: 100%; 
+
+    .create-btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
     }
 }

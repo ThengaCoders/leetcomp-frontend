@@ -3,6 +3,9 @@
   max-width: 1300px;
   margin: 0 auto; 
   padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .searchBar {
@@ -13,8 +16,10 @@
   position : relative;
   border: 2px solid #FFA116;
   border-radius: 25px;
-  width: 650px; 
+  width: 100%;
+  max-width: 650px; 
   background-color: white;
+  box-sizing: border-box;
 }
 
 .searchInput {
@@ -84,5 +89,95 @@
   padding: 20px 0;
   justify-content: center;
   justify-items: center;
-  
+}
+
+/* Tablet styles (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .searchPageContainer {
+    padding: 30px 18px;
+  }
+
+  .searchBar {
+    max-width: 600px;
+    margin: 30px auto;
+  }
+
+  .resultsHeading {
+    font-size: 1.6rem;
+    margin-top: 40px;
+    margin-bottom: 24px;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+}
+
+/* Mobile styles (max-width: 768px) */
+@media (max-width: 768px) {
+  .searchPageContainer {
+    padding: 24px 16px;
+  }
+
+  .searchBar {
+    max-width: 100%;
+    margin: 24px auto;
+    border-width: 1.5px;
+  }
+
+  .searchInput {
+    padding: 10px 45px 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .searchBtn {
+    right: 8px;
+    font-size: 1.2rem;
+  }
+
+  .resultsHeading {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 16px 0;
+  }
+}
+
+/* Small mobile styles (max-width: 480px) */
+@media (max-width: 480px) {
+  .searchPageContainer {
+    padding: 20px 12px;
+  }
+
+  .searchBar {
+    margin: 20px auto;
+  }
+
+  .searchInput {
+    padding: 10px 40px 10px 10px;
+    font-size: 0.9rem;
+  }
+
+  .searchBtn {
+    right: 6px;
+    font-size: 1.1rem;
+  }
+
+  .resultsHeading {
+    font-size: 1.3rem;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 12px 0;
+  }
 }

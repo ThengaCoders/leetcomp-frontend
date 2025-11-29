@@ -106,8 +106,3 @@
   .card{ width: 100%; border-radius:12px; }
   .hero{ height:180px; }
 }
-
-.card {
-  transform: scale(0.8);
-  transform-origin: center;
-}
