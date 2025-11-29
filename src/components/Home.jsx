@@ -4,9 +4,6 @@ import styles from './Home.module.css';
 const Home = () => {
   return (
     <>
-      <header> [ Header Component ] </header>
-
-      {}
       <main className={styles['home-container']}>
         
         <div className={styles['brand-wrapper']}>
@@ -25,8 +22,6 @@ const Home = () => {
         <button className={styles['create-btn']}>Create Room</button>
 
       </main>
-
-      <footer> [ Footer Component ] </footer>
     </>
   );
 };
