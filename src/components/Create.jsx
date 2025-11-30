@@ -99,7 +99,7 @@ const CreateRoom = () => {
       const res = await api.post("/api/rooms", payload); 
       console.log("Room Created Success:", res.data);
       alert("Room Created Successfully!");
-      navigate("/rooms"); 
+      navigate("/rooms/search"); 
 
     } catch (err) {
       console.error("Error creating room:", err);
