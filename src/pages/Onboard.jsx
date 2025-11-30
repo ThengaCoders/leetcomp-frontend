@@ -18,7 +18,6 @@ export default function Onboard() {
         username,
         leetcode,
         phone,
-        upi,
       });
 
       console.log("Onboard:", res.data);
@@ -93,20 +92,6 @@ export default function Onboard() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, "").slice(0, 10))}
                 placeholder="9876543210"
-              />
-            </div>
-          </div>
-
-          <div className={styles.fieldGroup}>
-            <label className={styles.label}>UPI ID</label>
-            <div className={styles.inputShell}>
-              <span>UPI</span>
-              <input
-                type="text"
-                className={styles.input}
-                value={upi}
-                onChange={(e) => setUpi(e.target.value)}
-                placeholder="username@bank"
               />
             </div>
           </div>
