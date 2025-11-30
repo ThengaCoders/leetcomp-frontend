@@ -10,6 +10,44 @@
   font-family: Inter, sans-serif;
 }
 
+.page {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Shared status card (loading, error, empty) */
+.main {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Shared status card (loading, error, empty) */
+.statusBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  margin-top: 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.statusTitle {
+  font-size: 20px;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
 /* MAIN PAGE */
 .roomDetails {
   background: var(--bg);

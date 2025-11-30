@@ -57,7 +57,7 @@ export default function Room() {
         setMembers(enrichedMembers);
       } catch (err) {
         console.error(err);
-        setError(err);
+        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -66,9 +66,28 @@ export default function Room() {
     loadRoom();
   }, [id]);
 
-  if (loading) return <div className={styles.loading}>Loading room...</div>;
-  if (error) return <div className={styles.error}>{error}</div>;
-  if (!room) return <div className={styles.error}>Room not found</div>;
+  if (loading) {
+    return (
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <div className={styles.statusBox}>
+            <h2 className={styles.statusTitle}>Loading room...</h2>
+          </div>
+        </main>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <div className={styles.statusBox}>
+            <h2 className={styles.statusTitle}>{error}</h2>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.roomDetails}>
