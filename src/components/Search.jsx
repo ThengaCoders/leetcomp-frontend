@@ -42,6 +42,8 @@ export default function Search() {
         participants: room.participant_count,
         cost: room.cost,
         prize: room.participant_count * room.cost,
+        isMember: room.isMember,
+        status: room.status,
         days,
         hrs,
         mins,

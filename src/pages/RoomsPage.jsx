@@ -33,9 +33,12 @@ const RoomsPage = () => {
             participants: room.participant_count,
             cost: room.cost,
             prize: room.cost * room.participant_count,
+            status: room.status,
+            isMember: room.isMember,
+            img: room.img_url,
             days,
             hrs,
-            mins,
+            mins
           };
         });
 
