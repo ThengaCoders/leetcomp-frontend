@@ -38,7 +38,7 @@ export default function Search() {
 
       const transformed = {
         id: room.id,
-        name: room.name,
+        name: room.roomName,
         participants: room.participant_count,
         cost: room.cost,
         prize: room.participant_count * room.cost,

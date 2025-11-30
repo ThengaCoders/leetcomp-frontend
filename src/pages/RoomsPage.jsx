@@ -29,7 +29,7 @@ const RoomsPage = () => {
           }
 
           return {
-            name: room.name,
+            name: room.roomName,
             participants: room.participant_count,
             cost: room.cost,
             prize: room.cost * room.participant_count,

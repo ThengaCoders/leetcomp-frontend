@@ -128,7 +128,7 @@ export default function Room() {
 
             <div className={styles.descItem}>
               <span className={styles.descLabel}>Room Name:</span>
-              <p className={styles.descValue}>{room.name}</p>
+              <p className={styles.descValue}>{room.roomName}</p>
             </div>
 
             <div className={styles.descItem}>
