@@ -1,12 +1,13 @@
-// components/Search.jsx
-
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import styles from "./Search.module.css";
 import RoomCard from './RoomsSlider/RoomCard'; 
 import api from "../api/axios"; 
 
 export default function Search() {
-  const [query, setQuery] = useState("");
+  const [params] = useSearchParams();
+  const initialCode = params.get("code") || "";
+  const [query, setQuery] = useState(initialCode);
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchedOnce, setSearchedOnce] = useState(false);
@@ -37,7 +38,7 @@ export default function Search() {
 
       const transformed = {
         id: room.id,
-        name: room.name,
+        name: room.roomName,
         participants: room.participant_count,
         cost: room.cost,
         prize: room.participant_count * room.cost,
@@ -55,6 +56,12 @@ export default function Search() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (initialCode) {
+      handleSearch();
+    }
+  }, [initialCode]);
 
   return (
     <div className={styles.searchPageContainer}> 
