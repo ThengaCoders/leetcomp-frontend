@@ -2,6 +2,7 @@ import React from "react";
 import styles from './RoomCard.module.css';
 import { useNavigate } from "react-router-dom";
 import api from "../../api/axios"; // adjust based on your project structure
+import { pre } from "framer-motion/client";
 
 const RoomCard = ({ room }) => {
   const navigate = useNavigate();
@@ -23,12 +24,18 @@ const RoomCard = ({ room }) => {
       });
 
       const { order } = orderRes.data;
+      console.log("room:",room);
+      
 
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY,
         amount: order.amount,
         currency: order.currency,
         order_id: order.id,
+        prefill: {
+          name: room.name,
+        },
+
         handler: async function (response) {
 
           await api.post("/api/payments/verify-payment", response);
