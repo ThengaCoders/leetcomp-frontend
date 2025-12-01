@@ -25,7 +25,7 @@ const RoomCard = ({ room }) => {
       const { order } = orderRes.data;
 
       const options = {
-        key: process.env.VITE_RAZORPAY_KEY,
+        key: import.meta.env.VITE_RAZORPAY_KEY,
         amount: order.amount,
         currency: order.currency,
         order_id: order.id,
