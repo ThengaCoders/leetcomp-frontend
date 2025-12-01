@@ -31,7 +31,7 @@ const RoomCard = ({ room }) => {
         order_id: order.id,
         handler: async function (response) {
 
-          await api.post("/api/payments/verify", response);
+          await api.post("/api/payments/verify-payment", response);
 
           alert("Payment successful!");
           navigate(`/rooms/${room.id}`);
