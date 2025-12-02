@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 // ✅ IMPORTING THE CUSTOM API INSTANCE (Handles Tokens)
 import api from '../api/axios'; 
 import styles from './Create.module.css';
+import { pre } from "framer-motion/client";
 
 const CreateRoom = () => {
   const navigate = useNavigate();
@@ -65,7 +66,53 @@ const CreateRoom = () => {
     }
   };
 
-  // --- 4. HANDLE SUBMIT ---
+  const handleFreeJoin = async (roomId) => {
+    try {
+      const res = await api.post(`/api/rooms/${roomId}/join`);
+      navigate(`/rooms/${roomId}`);
+    } catch (err) {
+      console.error(err);
+      alert("Error joining room");
+      navigate(`/rooms/search`);
+    }
+  };
+
+  const handlePaidJoin = async (roomName, roomId) => {
+    try {
+      const orderRes = await api.post("/api/payments/create-order", {
+        roomId: roomId,
+      });
+
+      const { order } = orderRes.data;
+
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY,
+        amount: order.amount,
+        currency: order.currency,
+        order_id: order.id,
+        prefill: {
+          name: roomName,
+        },
+
+        handler: async function (response) {
+
+          await api.post("/api/payments/verify-payment", response);
+
+          alert("Payment successful!");
+          navigate(`/rooms/${roomId}`);
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+
+    } catch (err) {
+      console.error(err);
+      alert("Payment failed");
+      navigate(`/rooms/search`);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -98,16 +145,21 @@ const CreateRoom = () => {
       console.log("Sending Payload to /api/rooms:", payload);
       const res = await api.post("/api/rooms", payload); 
       console.log("Room Created Success:", res.data);
+      setIsSubmitting(false);
       alert("Room Created Successfully!");
-      navigate("/rooms/search"); 
+      if(res.data.cost === 0){
+        handleFreeJoin(res.data.id);
+      }
+      else{
+        handlePaidJoin(res.data.roomName, res.data.id);
+      }
 
     } catch (err) {
       console.error("Error creating room:", err);
       // Optional: Check if err.response exists to show specific backend error
       const errorMsg = err.response?.data?.message || "Failed to create room.";
+      setIsSubmitting(false);
       alert(errorMsg);
-    } finally {
-      setIsSubmitting(false); 
     }
   };
 
