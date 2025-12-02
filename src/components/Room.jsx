@@ -40,7 +40,13 @@ export default function Room() {
         // Compute leaderboard with real final counts
         const enrichedMembers = await Promise.all(
           membersData.map(async (m) => {
-            const finalCount = await getFinalCount(m.leetcode);
+            let finalCount;
+            if (roomData.status === "ONGOING") {
+              finalCount = await getFinalCount(m.leetcode);
+            } else if (roomData.status === "FINISHED") {
+              finalCount = m.final_qn_count;
+            }
+
             const score = finalCount - m.initial_qn_count;
 
             return {
