@@ -8,14 +8,17 @@ const RoomCard = ({ room }) => {
   const navigate = useNavigate();
 
   const handleFreeJoin = async () => {
-    try {
-      const res = await api.post(`/api/rooms/${room.id}/join`);
-      if (res.success) navigate(`/rooms/${room.id}`);
-    } catch (err) {
-      console.error(err);
-      alert("Error joining room");
-    }
-  };
+  try {
+    const res = await api.post(`/api/rooms/${room.id}/join`);
+    console.log("Join Room Response:", res.data);  // 🔹 see exact error message
+
+    navigate(`/rooms/${room.id}`);    //not checking if res,data returns success cuz backend returns roomUser not success: true ...res.data is undefined
+  } catch (err) {
+    console.error(err.response?.data || err);
+    alert("Error joining room");
+  }
+};
+
 
   const handlePaidJoin = async () => {
     try {
