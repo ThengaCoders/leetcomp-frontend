@@ -1,7 +1,7 @@
 <!-- README TOP -->
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
+<div id="readme-top" align="center">
   <a href="https://leetcomp-frontend.vercel.app/">
     <img src="images/logo.png" alt="LeeComp Logo" width="80" height="80">
   </a>
@@ -14,9 +14,9 @@
     <a href="https://leetcomp-frontend.vercel.app/"><strong>View Live Demo »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/your_username/leecomp/issues/new?labels=bug">Report Bug</a>
+    <a href="https://github.com/ThengaCoders/leetcomp-frontend/issues/new?labels=bug">Report Bug</a>
     &middot;
-    <a href="https://github.com/your_username/leecomp/issues/new?labels=enhancement">Request Feature</a>
+    <a href="https://github.com/ThengaCoders/leetcomp-frontend/issues/new?labels=enhancement">Request Feature</a>
   </p>
 </div>
 
@@ -29,7 +29,7 @@
     <li><a href="#getting-started">Getting Started</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#team-contributors">Team & Contributors</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -38,10 +38,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Screenshot][product-screenshot]](https://leetcomp-frontend.vercel.app/)
 
-LeeComp is a platform where programmers can **compete together on LeetCode inside private rooms**.  
-Instead of solving problems alone, users can **create or join paid coding rooms** and compete for a **prize pool**.
+LeeComp is a platform where programmers can **compete together on LeetCode inside private challenge rooms**.  
+Instead of solving problems alone, users can **create or join paid competition rooms** and compete for a **prize pool**.
 
 **How it works:**
 1. Sign in with Google / OAuth
@@ -53,7 +52,6 @@ Instead of solving problems alone, users can **create or join paid coding rooms*
 **Prize Pool Calculation:**  
 Entry fee × Number of participants
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FEATURES -->
 ## Features
@@ -70,7 +68,6 @@ Entry fee × Number of participants
 - Transaction history / wallet  
 - Fully responsive UI (mobile + desktop)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
@@ -95,14 +92,41 @@ Follow these instructions to set up LeeComp locally.
 
 - Node.js & npm installed
 - Git installed
+- PostgreSQL installed and running
 
 ### Installation
 
-1. Clone the repo
+1. **Backend Setup**
 ```sh
-git clone https://github.com/your_username/leecomp.git
-
+git clone https://github.com/ThengaCoders/leetcomp-backend.git
+cd leetcomp-backend
+npm install
+# Set up .env file with DB credentials and any API keys
+node src/server.js
 ```
+2. **Frontend Setup**
+```sh
+git clone https://github.com/ThengaCoders/leetcomp-frontend.git
+cd leetcomp-frontend
+npm install
+npm run dev
+```
+
+<h2 id="team-contributors">Team & Contributors</h2>
+
+[ARVIND K N](https://github.com/Arvind-NITCG) |
+[AKASH T J](https://github.com/dveloper-akash) |
+[DEVA VINOD](https://github.com/deva1015)|
+[EMIR ZIYAN](https://github.com/orgs/ThengaCoders/people/ZE206)|
+[JEFIN JOJI](https://github.com/JefinCodes)|
+[NEHA MATHEW](https://github.com/nmath13)|
+[SMITHIN J RAJ](https://github.com/SmithinJRaj)|
+
+
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
@@ -121,5 +145,6 @@ git clone https://github.com/your_username/leecomp.git
 [Prisma-url]: https://www.prisma.io/
 [LeetCodeAPI.com]: https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black
 [LeetCodeAPI-url]: https://leetcode.com/api
+
 
 
