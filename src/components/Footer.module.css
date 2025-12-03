@@ -1,50 +1,60 @@
 .myFooter {
-  margin-top: auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 40px 10px; /* increased top padding so footer moves lower */
+  padding: 16px 40px 12px;
   font-family: Inter, sans-serif;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  background: #ffffff;
+  z-index: 100;
 }
 
 .line {
   width: 100%;            
   height: 1px;            /* thinner line */
   background-color: #ccc; /* light gray */
-  margin: 20px 0 15px 0;  /* adjust spacing above & below the line */
+  margin: 0 0 10px 0;  /* spacing below the line */
   border-radius: 2px;
   box-sizing: border-box;
 }
 
 .text {
   margin: 0;
-  font-size: 14px;        /* slightly smaller */
-  color: #0a1427;;
-  padding-bottom: 0.px;   /* moves the text further down */
+  font-size: 14px;
+  color: #0a1427;
+  padding-bottom: 0px;
+  line-height: 1.4;
 }
 
 /* Tablet styles (max-width: 1024px) */
 @media (max-width: 1024px) {
   .myFooter {
-    padding: 18px 35px 10px;
+    padding: 14px 35px 10px;
   }
 
   .text {
     font-size: 13px;
+  }
+
+  .line {
+    margin: 0 0 8px 0;
   }
 }
 
 /* Mobile styles (max-width: 768px) */
 @media (max-width: 768px) {
   .myFooter {
-    padding: 16px 24px 10px;
+    padding: 12px 24px 10px;
   }
 
   .line {
-    margin: 16px 0 12px 0;
+    margin: 0 0 8px 0;
   }
 
   .text {
@@ -55,11 +65,11 @@
 /* Small mobile styles (max-width: 480px) */
 @media (max-width: 480px) {
   .myFooter {
-    padding: 14px 16px 8px;
+    padding: 10px 16px 8px;
   }
 
   .line {
-    margin: 14px 0 10px 0;
+    margin: 0 0 7px 0;
   }
 
   .text {

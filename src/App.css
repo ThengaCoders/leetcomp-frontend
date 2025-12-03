@@ -28,7 +28,7 @@ html,
     width: 100%;
     max-width: 100%;
     margin: 0;
-    padding: 0 24px 24px;
+    padding: 0 24px 55px; /* Bottom padding to match larger footer */
     box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden; /* prevent horizontal overflow */
@@ -71,22 +71,24 @@ html,
 /* Mobile styles (max-width: 768px) */
 @media (max-width: 768px) {
     .app-root {
-        padding-top: 70px; /* reduced header space on mobile */
-        padding-bottom: 72px;
+        padding-top: 60px;
+        padding-bottom: 0;
     }
 
     .app-content {
-        padding: 0 16px 20px;
+        padding: 0 12px 50px;
+        min-height: calc(100vh - 60px);
     }
 }
 
 /* Small mobile styles (max-width: 480px) */
 @media (max-width: 480px) {
     .app-root {
-        padding-top: 65px;
+        padding-top: 55px;
     }
 
     .app-content {
-        padding: 0 12px 16px;
+        padding: 0 8px 48px;
+        min-height: calc(100vh - 55px);
     }
 }

@@ -1,15 +1,13 @@
 .wrapper {
-  height: calc(100vh - 84px - 64px);
-  max-height: calc(100vh - 84px - 64px);
+  min-height: calc(100vh - 84px - 55px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 40px 20px;
   background: #ffffff;
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 .loginCard {
@@ -196,9 +194,8 @@
 /* Tablet styles (max-width: 1024px) */
 @media (max-width: 1024px) {
   .wrapper {
-    height: calc(100vh - 70px - 64px);
-    max-height: calc(100vh - 70px - 64px);
-    padding: 20px;
+    min-height: calc(100vh - 70px - 50px);
+    padding: 35px 20px;
   }
 
   .loginCard {
@@ -224,9 +221,8 @@
 /* Mobile styles (max-width: 768px) */
 @media (max-width: 768px) {
   .wrapper {
-    height: calc(100vh - 70px - 64px);
-    max-height: calc(100vh - 70px - 64px);
-    padding: 16px;
+    min-height: calc(100vh - 70px - 50px);
+    padding: 30px 16px;
   }
 
   .loginCard {
@@ -280,9 +276,8 @@
 /* Small mobile styles (max-width: 480px) */
 @media (max-width: 480px) {
   .wrapper {
-    height: calc(100vh - 65px - 64px);
-    max-height: calc(100vh - 65px - 64px);
-    padding: 12px;
+    min-height: calc(100vh - 65px - 48px);
+    padding: 25px 12px;
   }
 
   .loginCard {

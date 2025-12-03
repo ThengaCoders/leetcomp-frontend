@@ -169,84 +169,98 @@ const CreateRoom = () => {
 
       <form className={styles.form} onSubmit={handleSubmit}>
         
-        {/* IMAGE UPLOADER */}
-        <div 
-          className={styles.imageUploadBox} 
-          onClick={() => fileInputRef.current.click()}
-        >
-          {imagePreview ? (
-            <img src={imagePreview} alt="Room Preview" className={styles.previewImage} />
-          ) : (
-            <div className={styles.placeholder}>
-              <i className="fa-solid fa-plus"></i>
-              <span>Upload Image</span>
-            </div>
-          )}
-          <input 
-            type="file" 
-            ref={fileInputRef} 
-            onChange={handleImageUpload} 
-            hidden 
-            accept="image/*"
-          />
+        {/* IMAGE UPLOADER - Full Width */}
+        <div className={styles.formImageSection}>
+          <div 
+            className={styles.imageUploadBox} 
+            onClick={() => fileInputRef.current.click()}
+          >
+            {imagePreview ? (
+              <img src={imagePreview} alt="Room Preview" className={styles.previewImage} />
+            ) : (
+              <div className={styles.placeholder}>
+                <i className="fa-solid fa-plus"></i>
+                <span>Upload Image</span>
+              </div>
+            )}
+            <input 
+              type="file" 
+              ref={fileInputRef} 
+              onChange={handleImageUpload} 
+              hidden 
+              accept="image/*"
+            />
+          </div>
         </div>
 
-        <div className={styles.inputGroup}>
-          <label>Room Name</label>
-          <input 
-            type="text" 
-            name="roomName" 
-            value={formData.roomName}
-            onChange={handleInputChange}
-            required
-          />
+        {/* TWO COLUMN GRID */}
+        <div className={styles.formGrid}>
+          {/* LEFT COLUMN */}
+          <div className={styles.inputGroup}>
+            <label>Room Name</label>
+            <input 
+              type="text" 
+              name="roomName" 
+              value={formData.roomName}
+              onChange={handleInputChange}
+              placeholder="Enter room name"
+              required
+            />
+          </div>
+
+          {/* RIGHT COLUMN */}
+          <div className={styles.inputGroup}>
+            <label>Entry Cost (₹)</label>
+            <input 
+              type="number" 
+              name="cost" 
+              value={formData.cost}
+              onChange={handleInputChange}
+              placeholder="0"
+              min="0"
+              required
+            />
+          </div>
+
+          {/* LEFT COLUMN */}
+          <div className={styles.inputGroup}>
+            <label>Room Code (Numbers only)</label>
+            <input 
+              type="number" 
+              name="roomCode" 
+              placeholder="Ex: 2025" 
+              value={formData.roomCode}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          {/* RIGHT COLUMN */}
+          <div className={styles.inputGroup}>
+            <label>End Date</label>
+            <input 
+              type="date" 
+              name="endDate" 
+              value={formData.endDate}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          {/* DESCRIPTION - Full Width */}
+          <div className={`${styles.inputGroup} ${styles.formFullWidth}`}>
+            <label>Room Description</label>
+            <textarea 
+              name="description" 
+              rows="3"
+              value={formData.description}
+              onChange={handleInputChange}
+              placeholder="Describe your room..."
+            />
+          </div>
         </div>
 
-        <div className={styles.inputGroup}>
-          <label>Room Description</label>
-          <textarea 
-            name="description" 
-            rows="3"
-            value={formData.description}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className={styles.inputGroup}>
-          <label>Room Code (Numbers only)</label>
-          <input 
-            type="number" 
-            name="roomCode" 
-            placeholder="Ex: 2025" 
-            value={formData.roomCode}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-
-        <div className={styles.inputGroup}>
-          <label>Entry Cost (₹)</label>
-          <input 
-            type="number" 
-            name="cost" 
-            value={formData.cost}
-            onChange={handleInputChange}
-            min="0"
-            required
-          />
-        </div>
-
-        <div className={styles.inputGroup}>
-          <label>End Date</label>
-          <input 
-            type="date" 
-            name="endDate" 
-            value={formData.endDate}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-
+        {/* SUBMIT BUTTON */}
         <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
           {isSubmitting ? "Creating..." : "Create Room"}
         </button>
