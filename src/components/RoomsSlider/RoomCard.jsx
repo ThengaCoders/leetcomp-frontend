@@ -91,6 +91,13 @@ const RoomCard = ({ room }) => {
   return (
     <div className={styles.card} role="region" aria-label="Room preview">
       <div className={styles.hero}>
+        {room.img && (
+          <img
+            src={room.img}
+            alt={room.name}
+            className={styles.heroImage}
+          />
+        )}
         <div className={styles["time-box"]}>{timeDisplay}</div>
       </div>
 
