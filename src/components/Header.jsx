@@ -55,14 +55,9 @@ export default function Header() {
         </NavLink>
 
         {loggedIn ? (
-          <button
-            aria-label="Logout"
-            onClick={handleLogout}
-            className={styles.navLinkBtn}
-          >
+          <button onClick={handleLogout} className={`${styles.navLink} ${styles.logoutBtn}`}>
             Logout
           </button>
-
         ) : (
           <NavLink
             to="/login"
@@ -100,7 +95,7 @@ export default function Header() {
             </NavLink>
 
             {loggedIn ? (
-              <button onClick={handleLogout} className={styles.mobileMenuItem}>
+              <button onClick={handleLogout} className={`${styles.mobileMenuItem} ${styles.logoutBtn}`}>
                 <i className="fa-solid fa-sign-out-alt"></i>
                 Logout
               </button>
