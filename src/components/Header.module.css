@@ -77,7 +77,8 @@
 
 /* Remove underline globally */
 header a,
-header a * {
+header a span,
+header a i {
   text-decoration: none !important;
   border-bottom: none !important;
 }

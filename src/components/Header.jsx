@@ -55,9 +55,14 @@ export default function Header() {
         </NavLink>
 
         {loggedIn ? (
-          <button onClick={handleLogout} className={styles.navLinkBtn}>
+          <button
+            aria-label="Logout"
+            onClick={handleLogout}
+            className={styles.navLinkBtn}
+          >
             Logout
           </button>
+
         ) : (
           <NavLink
             to="/login"
