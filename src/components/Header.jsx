@@ -8,7 +8,9 @@ export default function Header() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(!!getToken());
   const [isRoutesOpen, setIsRoutesOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,6 +21,7 @@ export default function Header() {
 
   const handleLogout = async () => {
     await logout(navigate);
+    setIsMobileMenuOpen(false);
   };
 
   const routeOptions = [
@@ -37,6 +40,9 @@ export default function Header() {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsRoutesOpen(false);
       }
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) {
+        setIsMobileMenuOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -44,6 +50,11 @@ export default function Header() {
 
   const handleRouteNavigate = (path) => {
     setIsRoutesOpen(false);
+    navigate(path);
+  };
+
+  const handleMobileMenuNavigate = (path) => {
+    setIsMobileMenuOpen(false);
     navigate(path);
   };
 
@@ -107,6 +118,65 @@ export default function Header() {
           )}
         </div>
       </nav>
+
+      {/* Hamburger Menu for Small Screens */}
+      <div className={styles.mobileMenuWrapper} ref={mobileMenuRef}>
+        <button
+          className={`${styles.hamburgerBtn} ${isMobileMenuOpen ? styles.active : ""}`}
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+        >
+          <span className={styles.hamburgerLine}></span>
+          <span className={styles.hamburgerLine}></span>
+          <span className={styles.hamburgerLine}></span>
+        </button>
+
+        {isMobileMenuOpen && (
+          <div className={styles.mobileMenu}>
+            <NavLink
+              to="/rooms"
+              className={({ isActive }) =>
+                isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
+              }
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <i className="fa-solid fa-door-open"></i>
+              My Rooms
+            </NavLink>
+
+            {loggedIn ? (
+              <button onClick={handleLogout} className={styles.mobileMenuItem}>
+                <i className="fa-solid fa-sign-out-alt"></i>
+                Logout
+              </button>
+            ) : (
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
+                }
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <i className="fa-solid fa-sign-in-alt"></i>
+                Sign In
+              </NavLink>
+            )}
+
+            <div className={styles.mobileDivider}></div>
+
+            <div className={styles.mobileMenuTitle}>More Options</div>
+            {routeOptions.map((route) => (
+              <button
+                key={route.path}
+                className={styles.mobileMenuItem}
+                onClick={() => handleMobileMenuNavigate(route.path)}
+              >
+                <i className="fa-solid fa-arrow-right"></i>
+                {route.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
     </header>
   );
 }
