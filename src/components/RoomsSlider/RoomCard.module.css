@@ -121,20 +121,26 @@
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
   .card {
-    max-width: 320px;
+    margin: 0 auto;
+    max-width: 280px;
   }
   .hero {
-    height: 160px;
+    height: 140px;
+  }
+  .card {
+    transform: scale(0.8);   /* 90% of original size */
+    transform-origin: center; /* or top left, top center, etc. */
   }
 }
 
 @media (max-width: 480px) {
   .card {
-    max-width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
     border-radius: 14px;
   }
   .hero {
-    height: 150px;
+    height: 130px;
   }
   .info {
     padding: 16px;

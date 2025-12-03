@@ -194,16 +194,17 @@
 /* Mobile styles (max-width: 768px) */
 @media (max-width: 768px) {
   .slider-container {
-    padding: 12px 16px;
+    padding-top: 20px;      /* Pull heading up */
+    padding-bottom: 20px; 
   }
 
   .slider-title {
-    font-size: 26px;
-    padding: 0 8px;
-    margin-bottom: 6px;
+    font-size: 24px;
+    margin-top: 6px;
   }
 
   .slider-wrapper {
+    justify-content: center;
     gap: 12px;
   }
 
@@ -213,11 +214,12 @@
 
   .slider-swiper {
     padding: 0 10px;
+    display: flex;
+    justify-content: center;
   }
 
   .pagination {
     margin-bottom: 12px;
-    margin-top: 6px;
   }
 
   .room-card {
@@ -244,7 +246,7 @@
 /* Small mobile styles (max-width: 480px) */
 @media (max-width: 480px) {
   .slider-container {
-    padding: 10px 12px;
+    padding: 20px 12px;
   }
 
   .slider-title {
