@@ -137,7 +137,7 @@ const CreateRoom = () => {
         room_code: Number(formData.roomCode), 
         name: formData.roomName,
         description: formData.description,
-        img_url: finalImgUrl,
+        image_url: finalImgUrl,
         cost: Number(formData.cost),     
         end_date: formData.endDate
       };
