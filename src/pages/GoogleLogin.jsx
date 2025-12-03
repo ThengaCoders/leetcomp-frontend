@@ -62,9 +62,22 @@ export default function GoogleLogin() {
     }
   };
 
+  function decodeJwt(token) {
+  try {
+    return JSON.parse(atob(token.split(".")[1]));
+  } catch (err) {
+    return null;
+  }
+}
+
   async function handleCredentialResponse(response) {
     try {
       const googleToken = response.credential; // JWT from Google
+      const decoded = decodeJwt(googleToken);
+      const email = decoded?.email ?? null;
+      const name = decoded?.name ?? null;
+      // const picture = decoded?.picture ?? null;
+
 
       // Send to your backend
       const resp = await api.post("/auth/google", {
@@ -78,6 +91,13 @@ export default function GoogleLogin() {
         saveToken(token);
       }
 
+      if (email) {
+        localStorage.setItem(
+          "user_profile",
+          JSON.stringify({ email, name })
+        );
+      }
+      
       if (onboardingRequired) {
         navigate("/onboard", { replace: true });
         return;

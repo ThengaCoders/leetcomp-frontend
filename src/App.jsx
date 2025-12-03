@@ -15,6 +15,7 @@ import Room from './components/Room'
 import NotFound from './components/NotFound'
 import Profile from "./pages/Profile";
 import PayoutDashboard from "./pages/PayoutDashboard";
+import AdminRoute from "./routes/AdminRoutes";
 
 function InterceptorBoot() {
   const navigate = useNavigate();
@@ -46,7 +47,11 @@ function App() {
             <Route path="/rooms/create" element={<Create />} />
             <Route path="/rooms" element={<MyRooms />} />
             <Route path="/rooms/:id" element={<Room />} />
-            <Route path="/payout-dashboard" element={<PayoutDashboard />} />
+            <Route path="/payout-dashboard" element={
+              <AdminRoute>
+                <PayoutDashboard />
+              </AdminRoute>
+              } />
             <Route path="*" element={<NotFound />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
