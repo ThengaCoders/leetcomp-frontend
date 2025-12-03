@@ -48,6 +48,49 @@
   font-weight: 600;
 }
 
+/* Tablet styles (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .main {
+    padding: 18px;
+  }
+
+  .statusBox {
+    padding: 35px 18px;
+  }
+}
+
+/* Mobile styles (max-width: 768px) */
+@media (max-width: 768px) {
+  .main {
+    padding: 16px;
+  }
+
+  .statusBox {
+    padding: 30px 16px;
+    margin-top: 30px;
+  }
+
+  .statusTitle {
+    font-size: 18px;
+  }
+}
+
+/* Small mobile styles (max-width: 480px) */
+@media (max-width: 480px) {
+  .main {
+    padding: 12px;
+  }
+
+  .statusBox {
+    padding: 24px 12px;
+    margin-top: 20px;
+  }
+
+  .statusTitle {
+    font-size: 16px;
+  }
+}
+
 /* MAIN PAGE */
 .roomDetails {
   background: var(--bg);
