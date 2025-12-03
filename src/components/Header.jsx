@@ -7,14 +7,12 @@ import styles from "./Header.module.css";
 export default function Header() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(!!getToken());
-  const [isRoutesOpen, setIsRoutesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const dropdownRef = useRef(null);
   const mobileMenuRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setLoggedIn(!!getToken()); // sync token changes
+      setLoggedIn(!!getToken());
     }, 300);
     return () => clearInterval(interval);
   }, []);
@@ -24,22 +22,8 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
-  const routeOptions = [
-    { label: "Home", path: "/" },
-    { label: "Login", path: "/login" },
-    { label: "Onboard", path: "/onboard" },
-    { label: "Rooms Search", path: "/rooms/search" },
-    { label: "Create Room", path: "/rooms/create" },
-    { label: "My Rooms", path: "/rooms" },
-    { label: "Room Details", path: "/rooms/demo-room" },
-    { label: "Payout Dashboard", path: "/payout-dashboard" },
-  ];
-
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setIsRoutesOpen(false);
-      }
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) {
         setIsMobileMenuOpen(false);
       }
@@ -47,16 +31,6 @@ export default function Header() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  const handleRouteNavigate = (path) => {
-    setIsRoutesOpen(false);
-    navigate(path);
-  };
-
-  const handleMobileMenuNavigate = (path) => {
-    setIsMobileMenuOpen(false);
-    navigate(path);
-  };
 
   return (
     <header className={styles.siteHeader}>
@@ -69,6 +43,7 @@ export default function Header() {
         </NavLink>
       </div>
 
+      {/* Desktop Navigation */}
       <nav className={styles.mainNav}>
         <NavLink
           to="/rooms"
@@ -93,33 +68,9 @@ export default function Header() {
             Sign In
           </NavLink>
         )}
-
-        <div className={styles.routesWrapper} ref={dropdownRef}>
-          <button
-            className={styles.routesToggle}
-            onClick={() => setIsRoutesOpen((prev) => !prev)}
-          >
-            Routes ▾
-          </button>
-
-          {isRoutesOpen && (
-            <div className={styles.routesDropdown}>
-              {routeOptions.map((route) => (
-                <button
-                  key={route.path}
-                  className={styles.routeItem}
-                  onClick={() => handleRouteNavigate(route.path)}
-                >
-                  <span className={styles.routeLabel}>{route.label}</span>
-                  <span className={styles.routePath}>{route.path}</span>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
       </nav>
 
-      {/* Hamburger Menu for Small Screens */}
+      {/* Mobile Menu */}
       <div className={styles.mobileMenuWrapper} ref={mobileMenuRef}>
         <button
           className={`${styles.hamburgerBtn} ${isMobileMenuOpen ? styles.active : ""}`}
@@ -160,20 +111,6 @@ export default function Header() {
                 Sign In
               </NavLink>
             )}
-
-            <div className={styles.mobileDivider}></div>
-
-            <div className={styles.mobileMenuTitle}>More Options</div>
-            {routeOptions.map((route) => (
-              <button
-                key={route.path}
-                className={styles.mobileMenuItem}
-                onClick={() => handleMobileMenuNavigate(route.path)}
-              >
-                <i className="fa-solid fa-arrow-right"></i>
-                {route.label}
-              </button>
-            ))}
           </div>
         )}
       </div>
