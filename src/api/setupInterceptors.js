@@ -37,6 +37,12 @@ export default function setupInterceptors(navigate, onLogout) {
     err => {
       const status = err?.response?.status;
 
+      // Check onboardingRequired in error responses
+      if (err?.response?.data?.onboardingRequired) {
+        if (typeof navigate === "function") navigate("/onboard");
+        return Promise.reject(err);
+      }
+
       // If unauthorized — clear token and route to login
       if (status === 401) {
         clearToken();
