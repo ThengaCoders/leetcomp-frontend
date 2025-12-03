@@ -233,8 +233,7 @@ header a * {
   border: none;
   font-size: inherit;      
   font-weight: inherit;    
-  line-height: inherit;    
-  padding: 0;              
+  line-height: inherit;                 
   color: #d32f2f;          
   cursor: pointer;
 }
