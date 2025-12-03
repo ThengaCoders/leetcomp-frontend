@@ -454,3 +454,55 @@ tbody tr:first-child {
     padding: 14px;
   }
 }
+
+@media (max-width: 550px) {
+  table {
+    min-width: 100%;
+  }
+
+  thead th:nth-child(2),
+  thead th:nth-child(3),
+  thead th:nth-child(4),
+  tbody td:nth-child(2),
+  tbody td:nth-child(3),
+  tbody td:nth-child(4) {
+    width: 60px;
+    text-align: center;
+  }
+
+  thead th:nth-child(1),
+  tbody td:nth-child(1) {
+    width: auto;
+    max-width: 200px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* Make numeric columns tighter on mobile */
+@media (max-width: 480px) {
+  table {
+    min-width: 100%; /* override the 400–450px forced width */
+  }
+
+  thead th:nth-child(2),
+  thead th:nth-child(3),
+  thead th:nth-child(4),
+  tbody td:nth-child(2),
+  tbody td:nth-child(3),
+  tbody td:nth-child(4) {
+    width: 50px;         /* each number column becomes narrow */
+    text-align: center;  /* center numeric values */
+  }
+
+  /* Username gets more space */
+  thead th:nth-child(1),
+  tbody td:nth-child(1) {
+    width: auto;
+    max-width: 190px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
