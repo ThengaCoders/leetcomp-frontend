@@ -131,7 +131,7 @@ header {
     .brand-title { font-size: 3rem; min-width: auto; }
     .logo-icon { font-size: 2.8rem; }
     .tagline { font-size: 1rem; }
-    .search-input { max-width: 100%; padding: 14px 20px; font-size: 0.95rem; }
+    .search-input { max-width: 95%; padding: 14px 20px; font-size: 0.95rem; }
     .create-btn { padding: 12px 28px; font-size: 0.95rem; }
 }
 
@@ -150,7 +150,7 @@ header {
     }
     
     .logo-icon { font-size: 2.5rem; }
-    .search-input { width: 100%; padding: 12px 15px; font-size: 0.9rem; }
+    .search-input { width: 95%; padding: 12px 15px; font-size: 0.9rem; }
     .tagline { font-size: 0.95rem; margin-top: 0; }
     .create-btn { padding: 12px 24px; font-size: 0.9rem; }
 }
