@@ -16,6 +16,11 @@ import NotFound from './components/NotFound'
 import Profile from "./pages/Profile";
 import PayoutDashboard from "./pages/PayoutDashboard";
 import AdminRoute from "./routes/AdminRoutes";
+import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
+import TermsAndConditions from "./pages/legal/TermsAndConditions";
+import RefundPolicy from "./pages/legal/RefundPolicy";
+import Contact from "./pages/legal/Contact";
+import About from "./pages/legal/About";
 
 function InterceptorBoot() {
   const navigate = useNavigate();
@@ -51,9 +56,14 @@ function App() {
               <AdminRoute>
                 <PayoutDashboard />
               </AdminRoute>
-              } />
+            } />
             <Route path="*" element={<NotFound />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </main>
         <Footer />

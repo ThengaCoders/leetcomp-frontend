@@ -34,6 +34,7 @@ export default function Header() {
 
   return (
     <header className={styles.siteHeader}>
+      {/* LOGO */}
       <div className={styles.logo}>
         <NavLink to="/" className={styles.logoLink}>
           <span className={styles.logoSymbol}>
@@ -43,76 +44,99 @@ export default function Header() {
         </NavLink>
       </div>
 
-      {/* Desktop Navigation */}
-      <nav className={styles.mainNav}>
-        <NavLink
-          to="/rooms"
-          className={({ isActive }) =>
-            isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
-          }
+      {/* 🔥 RIGHT SIDE GROUP (GitHub + Desktop Nav + Hamburger) */}
+      <div className={styles.rightGroup}>
+        {/* GitHub Button */}
+        <a
+          href="https://github.com/ThengaCoders"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.githubButton}
         >
-          My Rooms
-        </NavLink>
+          <img
+            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+            alt="GitHub"
+            className={styles.githubIcon}
+          />
+        </a>
 
-        {loggedIn ? (
-          <button onClick={handleLogout} className={`${styles.navLink} ${styles.logoutBtn}`}>
-            Logout
-          </button>
-        ) : (
+        {/* Desktop Navigation */}
+        <nav className={styles.mainNav}>
           <NavLink
-            to="/login"
+            to="/rooms"
             className={({ isActive }) =>
               isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
             }
           >
-            Sign In
+            My Rooms
           </NavLink>
-        )}
-      </nav>
 
-      {/* Mobile Menu */}
-      <div className={styles.mobileMenuWrapper} ref={mobileMenuRef}>
-        <button
-          className={`${styles.hamburgerBtn} ${isMobileMenuOpen ? styles.active : ""}`}
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-        >
-          <span className={styles.hamburgerLine}></span>
-          <span className={styles.hamburgerLine}></span>
-          <span className={styles.hamburgerLine}></span>
-        </button>
-
-        {isMobileMenuOpen && (
-          <div className={styles.mobileMenu}>
-            <NavLink
-              to="/rooms"
-              className={({ isActive }) =>
-                isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
-              }
-              onClick={() => setIsMobileMenuOpen(false)}
+          {loggedIn ? (
+            <button
+              onClick={handleLogout}
+              className={`${styles.navLink} ${styles.logoutBtn}`}
             >
-              <i className="fa-solid fa-door-open"></i>
-              My Rooms
+              Logout
+            </button>
+          ) : (
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+              }
+            >
+              Sign In
             </NavLink>
+          )}
+        </nav>
 
-            {loggedIn ? (
-              <button onClick={handleLogout} className={`${styles.mobileMenuItem} ${styles.logoutBtn}`}>
-                <i className="fa-solid fa-sign-out-alt"></i>
-                Logout
-              </button>
-            ) : (
+        {/* Mobile Menu */}
+        <div className={styles.mobileMenuWrapper} ref={mobileMenuRef}>
+          <button
+            className={`${styles.hamburgerBtn} ${isMobileMenuOpen ? styles.active : ""}`}
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          >
+            <span className={styles.hamburgerLine}></span>
+            <span className={styles.hamburgerLine}></span>
+            <span className={styles.hamburgerLine}></span>
+          </button>
+
+          {isMobileMenuOpen && (
+            <div className={styles.mobileMenu}>
               <NavLink
-                to="/login"
+                to="/rooms"
                 className={({ isActive }) =>
                   isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
                 }
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <i className="fa-solid fa-sign-in-alt"></i>
-                Sign In
+                <i className="fa-solid fa-door-open"></i>
+                My Rooms
               </NavLink>
-            )}
-          </div>
-        )}
+
+              {loggedIn ? (
+                <button
+                  onClick={handleLogout}
+                  className={`${styles.mobileMenuItem} ${styles.logoutBtn}`}
+                >
+                  <i className="fa-solid fa-sign-out-alt"></i>
+                  Logout
+                </button>
+              ) : (
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
+                  }
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <i className="fa-solid fa-sign-in-alt"></i>
+                  Sign In
+                </NavLink>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
