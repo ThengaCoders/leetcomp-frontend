@@ -122,7 +122,7 @@ export default function PayoutDashboard() {
 
         {rows.map((row) => (
           <div className="payout-row grid-layout" key={row.id}>
-            <div className="payout-col">{row.userName}</div>
+            <div className="payout-col">{row.username}</div>
             <div className="payout-col">{row.roomName}</div>
             <div className="payout-col">{row.roomId}</div>
             <div className="payout-col">₹{row.amount}</div>
