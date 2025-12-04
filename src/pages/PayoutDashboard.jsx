@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api/axios";
 import "./PayoutDashboard.css";
 
 export default function PayoutDashboard() {
@@ -18,7 +18,7 @@ export default function PayoutDashboard() {
 
   const fetchPayouts = async () => {
     try {
-      const res = await axios.get(`/api/payouts?status=${filter}`);
+      const res = await api.get(`/api/payouts?status=${filter}`);
       setRows(Array.isArray(res.data) ? res.data : []);   // always set array
     } catch (err) {
       console.error("Error fetching payouts:", err);
@@ -29,7 +29,7 @@ export default function PayoutDashboard() {
   // Open modal + fetch single payout info
   const handlePayClick = async (row) => {
     try {
-      const res = await axios.get(`/api/payouts/${row.id}`);
+      const res = await api.get(`/api/payouts/${row.id}`);
       setActiveRow(res.data);
       setIsModalOpen(true);
       setUtrValue("");
@@ -70,7 +70,7 @@ export default function PayoutDashboard() {
     }
 
     try {
-      await axios.patch(`/api/payouts/${activeRow.id}/mark-paid`, {
+      await api.patch(`/api/payouts/${activeRow.id}/mark-paid`, {
         utr: utrValue,
       });
 
@@ -85,7 +85,7 @@ export default function PayoutDashboard() {
   // Show receipt modal
   const handleDetailsClick = async (row) => {
     try {
-      const res = await axios.get(`/api/payouts/${row.id}`);
+      const res = await api.get(`/api/payouts/${row.id}`);
       setDetailsRow(res.data);
     } catch (err) {
       console.error("Error fetching payout details:", err);
