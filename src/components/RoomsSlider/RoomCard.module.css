@@ -143,3 +143,10 @@
     padding: 16px;
   }
 }
+
+@media (max-width: 480px) {
+  .card {
+    transform: scale(0.85);
+    transform-origin: center;
+  }
+}
