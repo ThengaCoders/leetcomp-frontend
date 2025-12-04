@@ -238,3 +238,50 @@ header a * {
   cursor: pointer;
 }
 
+/* =============================
+   RIGHT SIDE GROUP (GitHub + Nav + Hamburger)
+============================= */
+.rightGroup {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* =============================
+   GITHUB BUTTON
+============================= */
+.githubButton {
+  display: flex;
+  align-items: center;
+}
+
+.githubIcon {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.githubIcon:hover {
+  transform: scale(1.1);
+}
+
+/* =============================
+   MOBILE — GitHub stays outside (left of hamburger)
+============================= */
+@media (max-width: 480px) {
+  .rightGroup {
+    gap: 12px;
+  }
+
+  .githubButton {
+    order: -1;        /* pushes GitHub before hamburger */
+    margin-right: 6px;
+  }
+
+  .githubIcon {
+  width: 32px;
+  height: 32px;
+  
+}
+}
