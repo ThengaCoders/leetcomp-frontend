@@ -2,16 +2,16 @@
 <!-- PROJECT LOGO -->
 <br />
 <div id="readme-top" align="center">
-  <a href="https://leetcomp-frontend.vercel.app/">
-    <img src="images/logo.png" alt="LeeComp Logo" width="80" height="80">
+  <a href="https://leetcomp.app/">
+    <img src="images/logo.png" alt="LeetComp Logo" width="80" height="80">
   </a>
 
-  <h1 align="center" style="font-family: Arial, sans-serif;">LeeComp</h1>
+  <h1 align="center" style="font-family: Arial, sans-serif;">LeetComp</h1>
 
   <p align="center">
     <i>Where Lee's meet to compete</i>
     <br />
-    <a href="https://leetcomp-frontend.vercel.app/"><strong>View Live Demo »</strong></a>
+    <a href="https://leetcomp.app/"><strong>View Live Demo »</strong></a>
     <br />
     <br />
     <a href="https://github.com/ThengaCoders/leetcomp-frontend/issues/new?labels=bug">Report Bug</a>
@@ -36,7 +36,7 @@
 ## About The Project
 
 
-LeeComp is a platform where programmers can **compete together on LeetCode inside private challenge rooms**.  
+LeetComp is a platform where programmers can **compete together on LeetCode inside private challenge rooms**.  
 Instead of solving problems alone, users can **create or join paid competition rooms** and compete for a **prize pool**.
 
 **How it works:**
