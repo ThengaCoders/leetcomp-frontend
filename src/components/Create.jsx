@@ -66,6 +66,16 @@ const CreateRoom = () => {
     }
   };
 
+  // --- HANDLE IMAGE REMOVAL ---
+  const handleRemoveImage = (e) => {
+    e.stopPropagation(); // Prevent triggering the upload click
+    setSelectedFile(null);
+    setImagePreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''; // Reset file input
+    }
+  };
+
   const handleFreeJoin = async (roomId) => {
     try {
       const res = await api.post(`/api/rooms/${roomId}/join`);
@@ -176,7 +186,17 @@ const CreateRoom = () => {
             onClick={() => fileInputRef.current.click()}
           >
             {imagePreview ? (
+              <>
               <img src={imagePreview} alt="Room Preview" className={styles.previewImage} />
+               <button 
+                  type="button"
+                  className={styles.removeImageBtn}
+                  onClick={handleRemoveImage}
+                  aria-label="Remove image"
+                >
+                  ✕
+                </button>
+                </>
             ) : (
               <div className={styles.placeholder}>
                 <i className="fa-solid fa-plus"></i>

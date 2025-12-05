@@ -37,7 +37,7 @@
 .brand-title {
     font-size: 4rem;
     font-weight: 800;
-    color: #2c3e50;
+    color: (--text-primary1);
     margin: 0;
     letter-spacing: -2px;
     font-family: 'JetBrains Mono', monospace; 
@@ -158,7 +158,7 @@ header {
         font-size: 2rem; 
         letter-spacing: -1px; 
         min-width: auto;
-        text-align: center; 
+        text-align: center;
     }
     
     .logo-icon { font-size: 2rem; }
