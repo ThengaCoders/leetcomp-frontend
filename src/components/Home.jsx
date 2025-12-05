@@ -66,7 +66,7 @@ const Home = () => {
         <h1 
           className={styles['brand-title']} 
           ref={hackerTextRef} 
-          data-value="LeeComp"
+          data-value="LeetComp"
         >
           {/* Text is empty initially, filled by JS */}
         </h1>
