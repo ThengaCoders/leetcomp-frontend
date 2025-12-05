@@ -40,7 +40,7 @@ export default function Header() {
           <span className={styles.logoSymbol}>
             <i className="fa-solid fa-code"></i>
           </span>
-          <span className={styles.logoText}>LeeComp</span>
+          <span className={styles.logoText}>LeetComp</span>
         </NavLink>
       </div>
 
