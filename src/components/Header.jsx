@@ -3,12 +3,15 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { getToken } from "../auth/tokenStore";
 import { logout } from "../auth/logout";
 import styles from "./Header.module.css";
+import { useDarkMode } from "../context/DarkModeProvider";
+
 
 export default function Header() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(!!getToken());
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,12 +56,23 @@ export default function Header() {
           rel="noopener noreferrer"
           className={styles.githubButton}
         >
-          <img
-            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            alt="GitHub"
-            className={styles.githubIcon}
-          />
+          
+         <i className="fab fa-github" style={{fontSize: '35px', color: 'var(--text-primary1)'}}></i>
+          
         </a>
+
+         {/* Dark Mode Toggle Button */}
+        <button
+          onClick={toggleDarkMode}
+          className={styles.darkModeToggle}
+          aria-label="Toggle dark mode"
+        >
+          {isDarkMode ? (
+            <i className="fa-solid fa-sun"></i>
+          ) : (
+            <i className="fa-solid fa-moon"></i>
+          )}
+        </button>
 
         {/* Desktop Navigation */}
         <nav className={styles.mainNav}>

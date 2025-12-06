@@ -4,9 +4,9 @@
     width: 100%;      /* Default to full width available */
     margin: 16px auto;
     padding: 28px 30px;
-    background: white;
+    background: var(--bg-primary);
     border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
+    box-shadow: 0 10px 40px var(--shadow-lg), 0 0 0 1px var(--border-color);
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
     
@@ -16,7 +16,7 @@
 
 .title {
     text-align: center;
-    color: #2c3e50;
+    color: var(--text-primary1);
     margin-bottom: 18px;
     margin-top: 0;
     font-weight: 800;
@@ -53,13 +53,13 @@
     width: 100%;
     max-width: 290px;
     height: 120px;
-    border: 2px dashed #ccc;
+    border: 2px dashed var(--border-color);
     border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: #f8f9fa;
+    background-color: var(--bg-secondary);
     transition: all 0.3s ease;
     overflow: hidden;
     margin: 0 auto;
@@ -67,16 +67,42 @@
 
 .imageUploadBox:hover {
     border-color: #FFA116;
-    background-color: #fffdf5;
+    background-color: var(--bg-tertiary);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 161, 22, 0.15);
+}
+
+.removeImageBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  opacity: 0.7;
+}
+
+.removeImageBtn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 .placeholder {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #aaa;
+    color: var(--text-tertiary);
     gap: 10px;
 }
 
@@ -105,7 +131,7 @@
 .inputGroup label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--text-primary1);
     margin-left: 4px;
     margin-bottom: 0;
     letter-spacing: 0.02em;
@@ -116,14 +142,14 @@
     width: 100%; /* CRITICAL: Force inputs to fill the container */
     padding: 10px 13px;
     border-radius: 10px;
-    border: 1.5px solid #e0e0e0;
+    border: 1.5px solid var(--border-color);
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
-    background-color: #fafafa;
+    background-color: var(--bg-secondary);
     outline: none;
     transition: all 0.3s ease;
     box-sizing: border-box; /* Ensures padding doesn't break width */
-    color: #2c3e50;
+    color: var(--text-primary1);
 }
 
 .inputGroup textarea {
@@ -137,14 +163,14 @@
 .inputGroup input:focus,
 .inputGroup textarea:focus {
     border-color: #FFA116;
-    background-color: white;
+    background-color: var(--bg-primary);
     box-shadow: 0 0 0 3px rgba(255, 161, 22, 0.1);
 }
 
 .inputGroup input::placeholder,
 .inputGroup textarea::placeholder {
-    color: #bbb;
-    opacity: 1;
+    color: var(--text-tertiary);
+    opacity: 0.7;
 }
 
 /* --- BUTTON --- */

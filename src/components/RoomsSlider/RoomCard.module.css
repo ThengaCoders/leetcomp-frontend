@@ -2,25 +2,25 @@
   width: 100%;
   max-width: 360px;
   border-radius: 18px;
-  background: #ffffff;
+  background: var(--bg-primary);
   overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid var(--border-color);
 
   /* Modern shadow */
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 8px 24px var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease, background-color 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+  box-shadow: 0 16px 36px var(--shadow-lg);
 }
 
 /* --- HERO SECTION --- */
 .hero {
   height: 180px;
   background: linear-gradient(135deg, #FFA116, #FF8C00);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid var(--border-color);
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -52,12 +52,22 @@
   color: #2c3e50;
   border: 1px solid rgba(0,0,0,0.05);
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode countdown bubble */
+[data-theme="dark"] .time-box {
+  background: rgba(42, 42, 42, 0.95);
+  color: var(--text-primary1);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 /* Divider */
 .divider {
   height: 1px;
-  background: rgba(0,0,0,0.06);
+  background: var(--border-color);
+  transition: background-color 0.3s ease;
 }
 
 /* --- INFO SECTION --- */
@@ -72,20 +82,23 @@
   display: flex;
   justify-content: space-between;
   padding: 10px 12px;
-  background: #fafafa;
+  background: var(--bg-secondary);
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.04);
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .label {
   font-size: 0.88rem;
-  color: #6d7b88;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .value {
   font-size: 1rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text-primary1);
+  transition: color 0.3s ease;
 }
 
 /* JOIN BUTTON */
@@ -113,9 +126,15 @@
 }
 
 .join-btn:disabled {
-  background: #ccc;
+  background: #6c757d;
   cursor: not-allowed;
   box-shadow: none;
+}
+
+/* Dark mode disabled button */
+[data-theme="dark"] .join-btn:disabled {
+  background: #404040;
+  color: var(--text-tertiary);
 }
 
 /* --- RESPONSIVE --- */
@@ -142,9 +161,6 @@
   .join-wrap {
     padding: 16px;
   }
-}
-
-@media (max-width: 480px) {
   .card {
     transform: scale(0.85);
     transform-origin: center;
