@@ -10,9 +10,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  background: #ffffff;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+  background: var(--bg-primary);
+  box-shadow: 0 4px 18px var(--shadow-lg);
   z-index: 150;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* =============================
@@ -25,29 +26,21 @@
 }
 
 .navLink {
-  color: #2c3e50;
+  color: var(--text-primary1);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.navLink:hover {
-  color: black;
-  text-decoration: none !important;
-}
+
 
 .navLinkBtn {
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #2c3e50;
+  color: var(--text-primary1);
+  transition: color 0.3s ease;
 }
 
-.navLinkBtn:hover {
-  color: black;
-}
-
-.active {
-  color: black;
-}
 
 /* =============================
    LOGO
@@ -70,9 +63,10 @@
 }
 
 .logoText {
-  color: #2c3e50;
+  color: var(--text-primary1);
   font-size: 1.8rem;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 /* Remove underline globally */
@@ -87,6 +81,141 @@ header a * {
 ============================= */
 .mobileMenuWrapper {
   display: none;
+}
+
+/* =============================
+   RIGHT SIDE GROUP (GitHub + Dark Mode + Nav + Hamburger)
+============================= */
+.rightGroup {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* =============================
+   GITHUB BUTTON
+============================= */
+.githubButton {
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.githubIcon {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.githubIcon:hover {
+  transform: scale(1.1);
+}
+
+/* Dark mode - GitHub icon invert */
+
+
+/* =============================
+   DARK MODE TOGGLE BUTTON
+============================= */
+.darkModeToggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.darkModeToggle:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: rotate(20deg);
+}
+
+.darkModeToggle i {
+  transition: transform 0.3s ease;
+}
+
+/* Dark mode styles for toggle button */
+[data-theme="dark"] .darkModeToggle {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffd700;
+}
+
+[data-theme="dark"] .darkModeToggle:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* =============================
+   LOGOUT BUTTON
+============================= */
+.logoutBtn {
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: #d32f2f !important;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.logoutBtn:hover {
+  color: #b71c1c!important;
+}
+
+[data-theme="dark"] .logoutBtn {
+  color: #f44336 !important;
+}
+
+[data-theme="dark"] .logoutBtn:hover {
+  color: #ff5252  !important;
+}
+
+/* =============================
+   DARK MODE - HEADER STYLES
+============================= */
+[data-theme="dark"] .siteHeader {
+  background-color: var(--bg-primary);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid var(--border-color2);
+  border-top: 1px solid var(--border-color2);
+  border-left: 1px solid var(--border-color2);
+  border-right: 1px solid var(--border-color2);
+}
+
+[data-theme="dark"] .navLink {
+  color: var(--text-primary1);
+}
+
+[data-theme="dark"] .hamburgerLine {
+  background: var(--text-primary1);
+}
+
+[data-theme="dark"] .mobileMenu {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .mobileMenuItem {
+  color: var(--text-primary1);
+}
+
+[data-theme="dark"] .mobileMenuItem:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary1);
+}
+
+[data-theme="dark"] .mobileMenuItem.active {
+  background: var(--bg-tertiary);
+  color: var(--text-primary1);
 }
 
 /* =============================
@@ -265,6 +394,7 @@ header a * {
 .githubIcon:hover {
   transform: scale(1.1);
 }
+
 
 /* =============================
    MOBILE — GitHub stays outside (left of hamburger)
