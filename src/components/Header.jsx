@@ -59,36 +59,60 @@ export default function Header() {
             className={styles.githubIcon}
           />
         </a>
-
+	  
+        
+        
         {/* Desktop Navigation */}
-        <nav className={styles.mainNav}>
-          <NavLink
-            to="/rooms"
-            className={({ isActive }) =>
-              isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
-            }
-          >
-            My Rooms
-          </NavLink>
+<nav className={styles.mainNav}>
+  {/* My Rooms */}
+  <NavLink
+    to="/rooms" end
+    className={({ isActive }) =>
+      isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+    }
+  >
+    My Rooms
+  </NavLink>
 
-          {loggedIn ? (
-            <button
-              onClick={handleLogout}
-              className={`${styles.navLink} ${styles.logoutBtn}`}
-            >
-              Logout
-            </button>
-          ) : (
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
-              }
-            >
-              Sign In
-            </NavLink>
-          )}
-        </nav>
+  {/* Search Rooms */}
+  <NavLink
+    to="/rooms/search"
+    className={({ isActive }) =>
+      isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+    }
+  >
+    Search
+  </NavLink>
+
+  {/* Create Room */}
+  <NavLink
+    to="/rooms/create"
+    className={({ isActive }) =>
+      isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+    }
+  >
+    Create
+  </NavLink>
+
+  {/* Login / Logout */}
+  {loggedIn ? (
+    <button
+      onClick={handleLogout}
+      className={`${styles.navLink} ${styles.logoutBtn}`}
+    >
+      Logout
+    </button>
+  ) : (
+    <NavLink
+      to="/login"
+      className={({ isActive }) =>
+        isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+      }
+    >
+      Sign In
+    </NavLink>
+  )}
+</nav>
 
         {/* Mobile Menu */}
         <div className={styles.mobileMenuWrapper} ref={mobileMenuRef}>
@@ -104,7 +128,8 @@ export default function Header() {
           {isMobileMenuOpen && (
             <div className={styles.mobileMenu}>
               <NavLink
-                to="/rooms"
+                to="/rooms" end
+
                 className={({ isActive }) =>
                   isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
                 }
@@ -113,7 +138,32 @@ export default function Header() {
                 <i className="fa-solid fa-door-open"></i>
                 My Rooms
               </NavLink>
+              
+	   {/* Search */}
+	      <NavLink
+		to="/rooms/search"
+		className={({ isActive }) =>
+		  isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
+		}
+		onClick={() => setIsMobileMenuOpen(false)}
+	      >
+		<i className="fa-solid fa-magnifying-glass"></i>
+		Search
+	      </NavLink>
 
+	      {/* Create Room */}
+	      <NavLink
+		to="/rooms/create"
+		className={({ isActive }) =>
+		  isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
+		}
+		onClick={() => setIsMobileMenuOpen(false)}
+	      >
+		<i className="fa-solid fa-plus"></i>
+		Create Room
+	      </NavLink>
+
+		    
               {loggedIn ? (
                 <button
                   onClick={handleLogout}

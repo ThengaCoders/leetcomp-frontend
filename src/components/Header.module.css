@@ -75,6 +75,19 @@
   text-decoration: none;
 }
 
+.iconButton {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #2c3e50;         /* same as navLink */
+  transition: 0.2s ease;
+  padding: 6px;           /* cleaner spacing */
+}
+
+
+
+
 /* Remove underline globally */
 header a,
 header a * {
@@ -225,7 +238,13 @@ header a * {
   .mobileMenuItem i {
     width: 18px;
     text-align: center;
+    color: #2c3e50;
   }
+}
+
+
+.mobileMenuItem:hover i {
+  color: #FFA116;
 }
 
 .logoutBtn {
@@ -233,8 +252,7 @@ header a * {
   border: none;
   font-size: inherit;      
   font-weight: inherit;    
-  line-height: inherit;                 
-  color: #d32f2f;          
+  line-height: inherit;                          
   cursor: pointer;
 }
 
