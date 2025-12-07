@@ -11,18 +11,15 @@ export const useDarkMode = () => {
 };
 
 export const DarkModeProvider = ({ children }) => {
-  // Διαβάζει το dark mode από localStorage ή default false (light mode)
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedMode = localStorage.getItem('darkMode');
     return savedMode === 'true';
   });
 
-  // Toggle μεταξύ light και dark
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
   };
 
-  // Όταν αλλάζει το dark mode, το αποθηκεύει και το εφαρμόζει
   useEffect(() => {
     localStorage.setItem('darkMode', isDarkMode);
     document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
