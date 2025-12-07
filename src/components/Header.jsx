@@ -84,6 +84,26 @@ export default function Header() {
           >
             My Rooms
           </NavLink>
+          
+          
+          <NavLink
+            to="/rooms/search"
+            className={({ isActive }) =>
+              isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+            }
+          >
+            Search
+          </NavLink>
+          
+          
+          <NavLink
+            to="/rooms/create"
+            className={({ isActive }) =>
+              isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+            }
+          >
+            Create
+          </NavLink>
 
           {loggedIn ? (
             <button
@@ -116,40 +136,63 @@ export default function Header() {
           </button>
 
           {isMobileMenuOpen && (
-            <div className={styles.mobileMenu}>
-              <NavLink
-                to="/rooms"
-                className={({ isActive }) =>
-                  isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
-                }
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <i className="fa-solid fa-door-open"></i>
-                My Rooms
-              </NavLink>
+	    <div className={styles.mobileMenu}>
+	      <NavLink
+		to="/rooms"
+		className={({ isActive }) =>
+		  isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
+		}
+		onClick={() => setIsMobileMenuOpen(false)}
+	      >
+		<i className="fa-solid fa-door-open"></i>
+		My Rooms
+	      </NavLink>
 
-              {loggedIn ? (
-                <button
-                  onClick={handleLogout}
-                  className={`${styles.mobileMenuItem} ${styles.logoutBtn}`}
-                >
-                  <i className="fa-solid fa-sign-out-alt"></i>
-                  Logout
-                </button>
-              ) : (
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) =>
-                    isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
-                  }
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <i className="fa-solid fa-sign-in-alt"></i>
-                  Sign In
-                </NavLink>
-              )}
-            </div>
-          )}
+	      <NavLink
+		to="/rooms/search"
+		className={({ isActive }) =>
+		  isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
+		}
+		onClick={() => setIsMobileMenuOpen(false)}
+	      >
+		<i className="fa-solid fa-magnifying-glass"></i>
+		Search
+	      </NavLink>
+
+	      <NavLink
+		to="/rooms/create"
+		className={({ isActive }) =>
+		  isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
+		}
+		onClick={() => setIsMobileMenuOpen(false)}
+	      >
+		<i className="fa-solid fa-plus"></i>
+		Create
+	      </NavLink>
+
+	      {loggedIn ? (
+		<button
+		  onClick={handleLogout}
+		  className={`${styles.mobileMenuItem} ${styles.logoutBtn}`}
+		>
+		  <i className="fa-solid fa-sign-out-alt"></i>
+		  Logout
+		</button>
+	      ) : (
+		<NavLink
+		  to="/login"
+		  className={({ isActive }) =>
+		    isActive ? `${styles.mobileMenuItem} ${styles.active}` : styles.mobileMenuItem
+		  }
+		  onClick={() => setIsMobileMenuOpen(false)}
+		>
+		  <i className="fa-solid fa-sign-in-alt"></i>
+		  Sign In
+		</NavLink>
+	      )}
+	    </div>
+	  )}
+
         </div>
       </div>
     </header>
