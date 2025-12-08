@@ -20,7 +20,7 @@
 .slider-title {
     width: 100%;
     text-align: center;
-  color: (--text-primary1);
+  color: var(--text-primary1);
   font-size: 35px;
   padding: 0 20px;
   margin-top: 0;
@@ -35,12 +35,15 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center !important;
   gap: 25px;
   margin-top: 0;
   min-height: 0;
   overflow: hidden;
 }
+
+
+
 
 /* Navigation arrows */
 .arrow-btn {
@@ -56,6 +59,7 @@
   cursor: pointer;
   transition: 0.3s ease;
 }
+
 
 .arrow-btn:hover {
   background: #FFA116;
@@ -119,16 +123,15 @@
 /* Room Card */
 .room-card {
   width: 100%;
-  max-width: 300px;
-  max-height: 360px;
-  background: var(--bg-primary);
+  max-width: 360px;
+  max-height: 400px;
+  background: #ffffff;
   border-radius: 14px;
-  padding: 18px;
-  box-shadow: 0 2px 8px var(--shadow);
+  padding: 22px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: 0.3s ease;
   text-align: left;
-  height: 360px;
-  border: 1px solid var(--border-color);
+  height: 400px;
 }
 
 .room-card:hover {
@@ -168,7 +171,7 @@
   .slider-title {
     font-size: 30px;
     padding: 0 12px;
-    margin-bottom: 16px;
+    
   }
 
   .slider-wrapper {
@@ -312,28 +315,5 @@
   }
   
 }
-/* Ultra-small phones (max-width: 480px): put arrows above slider */
-@media (max-width: 480px) {
-  .slider-wrapper {
-   
-    gap: 1px;
-  }
 
-  /* Put arrows and title together */
-  .arrow-row {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* arrows left + right */
-    padding: 0 12px;
-  }
-
-  .arrow-btn {
-    display: grid;
-    width: 34px;
-    height: 40px;
-    font-size: 22px;
-    flex-shrink: 0;
-  }
-}
 
