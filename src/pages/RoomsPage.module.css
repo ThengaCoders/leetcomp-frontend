@@ -1,98 +1,108 @@
-.page {
-  width: 100%;
-  max-width: 100%;
+/* RoomsPage.module.css */
+
+.tabs {
   display: flex;
-  justify-content: center;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  background-color: var(--bg-primary);
-  transition: background-color 0.3s ease;
-}
-
-.main {
+  gap: 28px;
+  margin: 28px 0 16px;
+  border-bottom: 3px solid var(--border-light);
+  padding-bottom: 12px;
   width: 100%;
-  max-width: 900px;
-  padding: 20px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
-/* Shared status card (loading, error, empty) */
-.statusBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
-  margin-top: 40px;
-  background: var(--bg-primary);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px var(--shadow);
-  
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+.tabs::-webkit-scrollbar {
+  height: 0px; /* hide scrollbar for clean UI */
 }
 
-.statusTitle {
-  font-size: 20px;
-  color: var(--text-primary1);
-  margin-bottom: 8px;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.statusText {
+.tab {
+  cursor: pointer;
+  padding: 12px 10px;
+  font-size: 18px;
   color: var(--text-secondary);
-  font-size: 16px;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  position: relative;
+  white-space: nowrap;
+  transition: 0.22s ease;
 }
 
-/* Tablet styles (max-width: 1024px) */
+.tab:hover {
+  color: var(--text-primary);
+}
+
+.activeTab {
+  color: var(--text-primary1);
+  font-weight: 700;
+}
+
+
+.activeTab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  width: 100%;
+  height: 4px;
+  background: #ffa116; /* yellow underline */
+  border-radius: 4px;
+}
+
+/* MOBILE / TABLET RESPONSIVE */
 @media (max-width: 1024px) {
-  .main {
-    padding: 18px;
+  .tabs {
+    gap: 20px;
+    margin: 20px 0 12px;
+    padding-bottom: 10px;
   }
 
-  .statusBox {
-    padding: 35px 18px;
+  .tab {
+    padding: 10px 8px;
+    font-size: 16px;
   }
 }
 
-/* Mobile styles (max-width: 768px) */
 @media (max-width: 768px) {
-  .main {
-    padding: 16px;
+  .tabs {
+    gap: 16px;
+    margin: 16px 0 10px;
+    padding-bottom: 8px;
   }
 
-  .statusBox {
-    padding: 30px 16px;
-    margin-top: 30px;
-  }
-
-  .statusTitle {
-    font-size: 18px;
-  }
-
-  .statusText {
+  .tab {
+    padding: 8px 6px;
     font-size: 15px;
   }
 }
 
-/* Small mobile styles (max-width: 480px) */
 @media (max-width: 480px) {
-  .main {
-    padding: 12px;
+  .tabs {
+    gap: 12px;
+    margin: 12px 0 8px;
   }
 
-  .statusBox {
-    padding: 24px 12px;
+  .tab {
+    padding: 6px 4px;
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .tabs {
     margin-top: 20px;
   }
+  
+}
 
-  .statusTitle {
-    font-size: 16px;
-  }
+.noResultsMessage {
+  margin-top: 40px; /* adjust the gap as needed */
+  text-align: center;
+  font-size: 18px;
+  color: var(--text-secondary);
+}
 
-  .statusText {
-    font-size: 14px;
+@media (max-width: 480px) {
+  .noResultsMessage {
+    font-size: 14px; /* smaller on phone */
+    margin-top: 30px; /* optionally reduce gap too */
   }
 }
