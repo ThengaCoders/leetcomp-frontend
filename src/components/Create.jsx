@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import api from '../api/axios'; 
 import styles from './Create.module.css';
 import { pre } from "framer-motion/client";
+import { uploadImageToCloud } from '../utils/uploadImageToCloud';
 
 const CreateRoom = () => {
   const navigate = useNavigate();
@@ -39,32 +40,7 @@ const CreateRoom = () => {
   };
 
   // --- 3. HELPER: UPLOAD TO CLOUD ---
-  const uploadImageToCloud = async (file) => {
-    const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME; // Your Cloud Name
-    const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET; // Your Unsigned Preset
-
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", uploadPreset);
-
-    try {
-      const res = await fetch(
-        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-        { method: "POST", body: formData }
-      );
-
-      if (!res.ok) throw new Error("Cloudinary Upload Failed");
-      
-      const data = await res.json();
-      console.log("Cloudinary Response:", data);
-      return data.secure_url; 
-
-    } catch (error) {
-      console.error("Error uploading image:", error);
-      alert("Image upload failed! Please try again.");
-      return null;
-    }
-  };
+  // uploadImageToCloud(file);
 
   // --- HANDLE IMAGE REMOVAL ---
   const handleRemoveImage = (e) => {

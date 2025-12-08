@@ -17,32 +17,6 @@
 }
 
 /* =============================
-   DESKTOP NAV
-============================= */
-.mainNav {
-  display: flex;
-  gap: 1.25rem;
-  align-items: center;
-}
-
-.navLink {
-  color: var(--text-primary1);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-
-
-.navLinkBtn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: var(--text-primary1);
-  transition: color 0.3s ease;
-}
-
-
-/* =============================
    LOGO
 ============================= */
 .logoLink {
@@ -56,8 +30,6 @@
 }
 
 .logoSymbol {
-  font-family: "Font Awesome 6 Free", sans-serif;
-  font-weight: 900;
   font-size: 2.5rem;
   color: #FFA116;
 }
@@ -65,7 +37,6 @@
 .logoText {
   color: var(--text-primary1);
   font-size: 1.8rem;
-  text-decoration: none;
   transition: color 0.3s ease;
 }
 
@@ -73,18 +44,10 @@
 header a,
 header a * {
   text-decoration: none !important;
-  border-bottom: none !important;
 }
 
 /* =============================
-   MOBILE MENU WRAPPER (HIDDEN ON DESKTOP)
-============================= */
-.mobileMenuWrapper {
-  display: none;
-}
-
-/* =============================
-   RIGHT SIDE GROUP (GitHub + Dark Mode + Nav + Hamburger)
+   RIGHT GROUP
 ============================= */
 .rightGroup {
   display: flex;
@@ -93,30 +56,26 @@ header a * {
 }
 
 /* =============================
-   GITHUB BUTTON
+   NAVIGATION (DESKTOP)
 ============================= */
-.githubButton {
+.mainNav {
   display: flex;
+  gap: 1.25rem;
   align-items: center;
-  transition: opacity 0.3s ease;
 }
 
-.githubIcon {
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.3s ease;
+.navLink {
+  color: var(--text-primary1);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.githubIcon:hover {
-  transform: scale(1.1);
+.navLink.active {
+  color: #FFA116;
 }
-
-/* Dark mode - GitHub icon invert */
-
 
 /* =============================
-   DARK MODE TOGGLE BUTTON
+   DARK MODE TOGGLE
 ============================= */
 .darkModeToggle {
   width: 40px;
@@ -138,118 +97,118 @@ header a * {
   transform: rotate(20deg);
 }
 
-.darkModeToggle i {
-  transition: transform 0.3s ease;
-}
-
-/* Dark mode styles for toggle button */
 [data-theme="dark"] .darkModeToggle {
   background-color: rgba(255, 255, 255, 0.1);
   color: #ffd700;
 }
 
-[data-theme="dark"] .darkModeToggle:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+/* =============================
+   PROFILE AVATAR (DESKTOP)
+============================= */
+.profileWrapper {
+  position: relative;
+}
+
+.profileAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profileAvatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 /* =============================
-   LOGOUT BUTTON
+   PROFILE DROPDOWN
 ============================= */
-.logoutBtn {
+.profileDropdown {
+  position: absolute;
+  right: 0;
+  top: 52px;
+  background: var(--bg-primary);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  border: 1px solid var(--border-color);
+  min-width: 160px;
+  padding: 8px 0;
+  animation: fadeIn 0.25s ease-out;
+  z-index: 300;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dropdownItem {
+  width: 100%;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   background: none;
   border: none;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  color: #d32f2f !important;
+  font-size: 0.9rem;
+  color: var(--text-primary1);
   cursor: pointer;
-  transition: color 0.3s ease;
+  text-align: left;
+  transition: all 0.2s ease;
 }
 
-.logoutBtn:hover {
-  color: #b71c1c!important;
+.dropdownItem:hover {
+  background: #f7f7f7;
+  color: #FFA116;
 }
 
-[data-theme="dark"] .logoutBtn {
-  color: #f44336 !important;
+.dropdownItem:last-child {
+  color: #dc3545;
 }
 
-[data-theme="dark"] .logoutBtn:hover {
-  color: #ff5252  !important;
+.dropdownItem:last-child:hover {
+  background: #f8d7da;
+  color: #c82333;
 }
 
-/* =============================
-   DARK MODE - HEADER STYLES
-============================= */
-[data-theme="dark"] .siteHeader {
-  background-color: var(--bg-primary);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
-  border-bottom: 1px solid var(--border-color2);
-  border-top: 1px solid var(--border-color2);
-  border-left: 1px solid var(--border-color2);
-  border-right: 1px solid var(--border-color2);
+[data-theme="dark"] .dropdownItem:hover {
+  background: rgba(255, 161, 22, 0.15);
 }
 
-[data-theme="dark"] .navLink {
-  color: var(--text-primary1);
+[data-theme="dark"] .dropdownItem:last-child:hover {
+  background: rgba(220, 53, 69, 0.2);
+  color: #ff6b6b;
 }
 
-[data-theme="dark"] .hamburgerLine {
-  background: var(--text-primary1);
-}
-
-[data-theme="dark"] .mobileMenu {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-[data-theme="dark"] .mobileMenuItem {
-  color: var(--text-primary1);
-}
-
-[data-theme="dark"] .mobileMenuItem:hover {
-  background: var(--bg-tertiary);
-  color: var(--text-primary1);
-}
-
-[data-theme="dark"] .mobileMenuItem.active {
-  background: var(--bg-tertiary);
-  color: var(--text-primary1);
+.dropdownItem i {
+  width: 18px;
+  text-align: center;
 }
 
 /* =============================
-   MEDIA QUERIES
+   GITHUB BUTTON
 ============================= */
-
-/* Tablet */
-@media (max-width: 1024px) {
-  .siteHeader {
-    padding: 14px 20px;
-  }
-
-  .mainNav {
-    gap: 1rem;
-  }
-
-  .logoText {
-    font-size: 1.6rem;
-  }
+.githubButton {
+  display: flex;
+  align-items: center;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .siteHeader {
-    padding: 10px 14px;
-  }
-
-  .mainNav {
-    gap: 0.75rem;
-    font-size: 0.9rem;
-  }
+/* =============================
+   MOBILE MENU WRAPPER (DEFAULT HIDDEN)
+============================= */
+.mobileMenuWrapper {
+  display: none;
 }
 
-/* SMALL MOBILE – MAIN NAV HIDDEN, HAMBURGER ENABLED */
 @media (max-width: 480px) {
   .mainNav {
     display: none;
@@ -261,9 +220,7 @@ header a * {
     align-items: center;
   }
 
-  /* =============================
-       HAMBURGER BUTTON
-    ============================= */
+  /* HAMBURGER */
   .hamburgerBtn {
     display: flex;
     flex-direction: column;
@@ -283,34 +240,30 @@ header a * {
     transition: all 0.3s ease;
   }
 
-  /* Hamburger Animations */
+  /* Animation */
   .hamburgerBtn.active .hamburgerLine:nth-child(1) {
     transform: rotate(45deg) translateY(11px);
   }
   .hamburgerBtn.active .hamburgerLine:nth-child(2) {
     opacity: 0;
-    transform: translateX(-10px);
   }
   .hamburgerBtn.active .hamburgerLine:nth-child(3) {
     transform: rotate(-45deg) translateY(-11px);
   }
 
-  /* =============================
-       MOBILE MENU PANEL
-    ============================= */
+  /* MOBILE MENU PANEL */
   .mobileMenu {
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
-    background: #ffffff;
+    background: var(--bg-primary);
     border-radius: 14px;
+    border: 1px solid var(--border-color);
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
-    border: 1px solid #ede9de;
     padding: 12px 0;
     min-width: 200px;
     z-index: 200;
     animation: slideDown 0.3s ease forwards;
-    transform-origin: top right;
   }
 
   @keyframes slideDown {
@@ -330,14 +283,12 @@ header a * {
     gap: 12px;
     width: 100%;
     padding: 12px 16px;
+    font-size: 0.9rem;
+    color: var(--text-primary1);
     background: none;
     border: none;
-    color: #2c3e50;
-    font-size: 0.9rem;
     cursor: pointer;
-    text-decoration: none;
     transition: all 0.2s ease;
-    text-align: left;
   }
 
   .mobileMenuItem:hover {
@@ -346,72 +297,67 @@ header a * {
     padding-left: 20px;
   }
 
-  .mobileMenuItem.active {
-    background: #f0f4f8;
-    color: #FFA116;
-  }
-
   .mobileMenuItem i {
     width: 18px;
     text-align: center;
   }
 }
 
-.logoutBtn {
-  background: none;
-  border: none;
-  font-size: inherit;      
-  font-weight: inherit;    
-  line-height: inherit;                 
-  color: #d32f2f;          
-  cursor: pointer;
+/* =============================
+   DARK MODE STYLES
+============================= */
+[data-theme="dark"] .siteHeader {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color2);
+}
+
+[data-theme="dark"] .navLink {
+  color: var(--text-primary1);
+}
+
+[data-theme="dark"] .mobileMenu {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .dropdownItem:hover {
+  background: var(--bg-tertiary);
+  color: #FFA116;
+}
+
+[data-theme="dark"] .profileDropdown {
+  background: var(--bg-secondary);
+  border-color: var(--border-color2);
 }
 
 /* =============================
-   RIGHT SIDE GROUP (GitHub + Nav + Hamburger)
+   RESPONSIVE ADJUSTMENTS
 ============================= */
-.rightGroup {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
 
-/* =============================
-   GITHUB BUTTON
-============================= */
-.githubButton {
-  display: flex;
-  align-items: center;
-}
-
-.githubIcon {
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.githubIcon:hover {
-  transform: scale(1.1);
-}
-
-
-/* =============================
-   MOBILE — GitHub stays outside (left of hamburger)
-============================= */
-@media (max-width: 480px) {
-  .rightGroup {
-    gap: 12px;
+/* Tablet */
+@media (max-width: 1024px) {
+  .siteHeader {
+    padding: 14px 20px;
   }
 
-  .githubButton {
-    order: -1;        /* pushes GitHub before hamburger */
-    margin-right: 6px;
+  .logoText {
+    font-size: 1.65rem;
   }
+}
 
-  .githubIcon {
-  width: 32px;
-  height: 32px;
-  
+/* Mobile */
+@media (max-width: 768px) {
+  .siteHeader {
+    padding: 10px 14px;
+  }
 }
+
+/* 🔥 FIX: Remove white background / border / glow in dark mode */
+/* 🌙 Dark Mode Header — clean background + subtle bottom shadow */
+[data-theme="dark"] .siteHeader {
+  background: var(--bg-primary) !important;
+  border: none !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.55) !important; /* soft dark shadow */
 }
+
+

@@ -113,6 +113,50 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ===== CUSTOM SCROLLBAR - LIGHT MODE ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 10px;
+  border: 2px solid var(--bg-secondary);
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
+}
+
+/* ===== CUSTOM SCROLLBAR - DARK MODE ===== */
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #404040;
+  border: 2px solid var(--bg-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-color: #d0d0d0 var(--bg-secondary);
+  scrollbar-width: thin;
+}
+
+[data-theme="dark"] * {
+  scrollbar-color: #404040 var(--bg-secondary);
+}
+
 /* Common elements */
 input, textarea, select {
   background-color: var(--bg-secondary);

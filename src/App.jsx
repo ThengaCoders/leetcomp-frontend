@@ -21,6 +21,7 @@ import TermsAndConditions from "./pages/legal/TermsAndConditions";
 import RefundPolicy from "./pages/legal/RefundPolicy";
 import Contact from "./pages/legal/Contact";
 import About from "./pages/legal/About";
+import ProfileSettings from "./pages/ProfileSettings";
 
 function InterceptorBoot() {
   const navigate = useNavigate();
@@ -64,6 +65,7 @@ function App() {
             <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
+            <Route path="/settings" element={<ProfileSettings />} />
           </Routes>
         </main>
         <Footer />
