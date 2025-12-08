@@ -5,7 +5,7 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   padding: 18px 40px 14px;
   font-family: Inter, sans-serif;
   width: 100%;
@@ -26,23 +26,33 @@
   transition: background-color 0.3s ease;
 }
 
+/* Content Row - Copyright and Legal Links */
+.contentRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
 /* Legal Links Row */
 .linksWrapper {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 4px;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  margin-bottom: 0;
 }
 
 /* Single Link - Force all states */
 .link {
-  font-size: 14px;
+  font-size: 11px;
   color: var(--text-primary1);
   text-decoration: none;
   opacity: 0.85;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .link:hover {
@@ -53,7 +63,7 @@
 /* Dots between links */
 .dot {
   color: var(--text-tertiary);
-  font-size: 12px;
+  font-size: 10px;
   margin: 0 4px;
   transition: color 0.3s ease;
 }
@@ -65,6 +75,7 @@
   color: var(--text-primary1);
   opacity: 0.75;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 /* Tablet (≤1024px) */
@@ -74,7 +85,7 @@
   }
 
   .link {
-    font-size: 13px;
+    font-size: 10px;
   }
 
   .text {
@@ -88,16 +99,25 @@
     padding: 14px 20px 10px;
   }
 
+  .contentRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
   .linksWrapper {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 8px;
   }
 
   .link {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .dot {
-    font-size: 11px;
+    font-size: 9px;
   }
 
   .text {
@@ -111,12 +131,20 @@
     padding: 12px 12px 10px;
   }
 
-  .linksWrapper {
+  .contentRow {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 6px;
   }
 
-  .link{
-    font-size: 11px;
+  .linksWrapper {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .link {
+    font-size: 9px;
   }
 
   .text {
