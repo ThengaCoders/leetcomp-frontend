@@ -222,9 +222,7 @@
     gap: 12px;
   }
 
-  .arrow-btn {
-    display: none;
-  }
+
 
   .slider-swiper {
     padding: 0 8px;
@@ -312,4 +310,30 @@
   .room-card:hover {
     transform: none;
   }
+  
 }
+/* Ultra-small phones (max-width: 480px): put arrows above slider */
+@media (max-width: 480px) {
+  .slider-wrapper {
+   
+    gap: 1px;
+  }
+
+  /* Put arrows and title together */
+  .arrow-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* arrows left + right */
+    padding: 0 12px;
+  }
+
+  .arrow-btn {
+    display: grid;
+    width: 34px;
+    height: 40px;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+}
+
