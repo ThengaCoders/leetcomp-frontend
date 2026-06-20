@@ -13,57 +13,20 @@ export default function Room() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Fetch final qn count from LeetCode API
-  async function getFinalCount(leetcodeId) {
-    try {
-      const res = await fetch(
-        `https://leetcode-stats-api.herokuapp.com/${leetcodeId}`
-      );
-      const data = await res.json();
-      return typeof data.totalSolved === "number" ? data.totalSolved : 0;
-    } catch (err) {
-      console.error("LeetCode API failed:", err);
-      return 0;
-    }
-  }
-
   useEffect(() => {
     async function loadRoom() {
       try {
         setLoading(true);
 
-        // Fetch room + members
+        // Fetch room + members (Backend now handles LeetCode API and scoring!)
         const res = await api.get(`/api/rooms/${id}`);
-        const roomData = res.data.room;
-        const membersData = res.data.members;
+        
+        setRoom(res.data.room);
+        setMembers(res.data.members); // Expected to be enriched and sorted by your backend
 
-        // Compute leaderboard with real final counts
-        const enrichedMembers = await Promise.all(
-          membersData.map(async (m) => {
-            let finalCount;
-            if (roomData.status === "ONGOING") {
-              finalCount = await getFinalCount(m.leetcode);
-            } else if (roomData.status === "FINISHED") {
-              finalCount = m.final_qn_count;
-            }
-
-            const score = finalCount - m.initial_qn_count;
-
-            return {
-              ...m,
-              final_qn_count: finalCount,
-              score,
-            };
-          })
-        );
-
-        enrichedMembers.sort((a, b) => b.score - a.score);
-
-        setRoom(roomData);
-        setMembers(enrichedMembers);
       } catch (err) {
         console.error(err);
-        setError(err.message);
+        setError(err.message || "Failed to load room");
       } finally {
         setLoading(false);
       }
